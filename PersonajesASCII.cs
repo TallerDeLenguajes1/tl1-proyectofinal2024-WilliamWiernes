@@ -1,28 +1,28 @@
-namespace EspacioPersonajesASCII;
+namespace EspacioPersonajeASCII;
 
 public class Animacion
 {
     // Esta función hace el efecto de escribir letra a letra
-    public static void Escribir(string texto, int velocidad)
+    public static void Escribir(string Texto, int Velocidad)
     {
-        foreach (char letra in texto)
+        foreach (char Letra in Texto)
         {
-            Console.Write(letra);
-            Thread.Sleep(velocidad); // Tiempo que demora hasta escribir otra letra, en ms
+            Console.Write(Letra);
+            Thread.Sleep(Velocidad); // Tiempo que demora hasta escribir otra letra, en ms
         }
         Console.WriteLine(); // Salto de línea entre textos
     }
 
-    public static void PresentacionInicio(string nombrePP, string generoPP)
+    public static void PresentacionInicio(string NombrePP, string GeneroPP)
     {
         Console.SetCursorPosition(45, 10);
-        if (generoPP == "F" || generoPP == "f")
+        if (GeneroPP == "female")
         {
-            Escribir($"Bienvenida {nombrePP}, te estaba esperando.", 60);
+            Escribir($"Bienvenida {NombrePP}, te estaba esperando.", 60);
         }
         else
         {
-            Escribir($"Bienvenido {nombrePP}, te estaba esperando.", 60);
+            Escribir($"Bienvenido {NombrePP}, te estaba esperando.", 60);
         }
         Thread.Sleep(1500);
         Console.SetCursorPosition(45, 11);
@@ -58,7 +58,7 @@ public class Animacion
     };
 
     public static string[] HarryPotter = new string[]{
-        @"           ⢀",
+        @"         ⢀",
         @"⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡄⠀⠀⠀⡀",
         @"⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⣷⠀⠀⠀⢣",
         @"⠀⠀⠀⢀⣤⠀⠀⣰⠿⠡⢿⣷⡄⠀⠘⣷⡀⠀⢡⡀⠀⠀⢠",
@@ -84,13 +84,13 @@ public class Animacion
     };
 
     // Esta función printea línea a línea un array de strings. Velocidad en ms
-    public static void Dibujar(string[] Dibujo, int velocidad)
+    public static void Dibujar(string[] Dibujo, int Velocidad)
     {
         Console.WriteLine();
 
-        foreach (string linea in Dibujo)
+        foreach (string Linea in Dibujo)
         {
-            Escribir(linea, velocidad);
+            Escribir(Linea, Velocidad);
         }
 
         Console.WriteLine();
