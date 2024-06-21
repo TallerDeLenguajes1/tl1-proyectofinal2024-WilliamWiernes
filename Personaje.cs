@@ -81,10 +81,10 @@ public class Wand
 public class Datos
 {
     private string nombre;
-    private string genero; // female o male por tema de la API
+    private string sexo; // female o male por tema de la API
 
     public string Nombre { get => nombre; set => nombre = value; }
-    public string Genero { get => genero; set => genero = value; }
+    public string Sexo { get => sexo; set => sexo = value; }
 }
 
 public class Caracteristicas
@@ -109,20 +109,61 @@ public class Personaje(Datos Descripcion, Caracteristicas Habilidades)
 
 public class FabricaDePersonajes
 {
+    // Función para crear al Personaje Principal
+    public static Personaje CrearPersonajePrincipal()
+    {
+        // Datos para el Personaje Principal
+        string NombrePP, SexoPP;
+        Console.WriteLine("Antes de comenzar");
+        Console.Write("Ingresa tu Nombre: ");
+        NombrePP = Console.ReadLine();
+
+        // Puede continuar únicamente cuando ingresa el género de forma correcta
+        do
+        {
+            Console.Write("Y tu Sexo (F o M): ");
+            SexoPP = Console.ReadLine();
+        } while (SexoPP != "F" && SexoPP != "M" && SexoPP != "f" && SexoPP != "m");
+
+        // Creo el personaje pricipal a mano, el resto de forma aleatoria
+        SexoPP = (SexoPP == "F" || SexoPP == "f") ? "Femenino" : "Masculino";
+
+        Datos Descripcion = new Datos
+        {
+            Nombre = NombrePP,
+            Sexo = SexoPP
+        };
+
+        var Aleatorio = new Random();
+        int AtaqueAle = Aleatorio.Next(1, 5);
+        int BloqueoAle = Aleatorio.Next(1, 5);
+
+        Caracteristicas Habilidades = new Caracteristicas
+        {
+            Ataque = AtaqueAle,
+            Bloqueo = BloqueoAle,
+            Salud = 100
+        };
+
+        Personaje PersonajePrincipal = new Personaje(Descripcion, Habilidades);
+
+        return PersonajePrincipal;
+    }
+
     // Función para desearilizar el json de la url
     public static async Task<List<PersonajeAPI>> GetPersonajesAsync()
     {
-        var url = "https://hp-api.onrender.com/api/characters/students";
+        var Url = "https://hp-api.onrender.com/api/characters/students";
 
         try
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(url);
-            response.EnsureSuccessStatusCode();
+            HttpClient Client = new HttpClient();
+            HttpResponseMessage Response = await Client.GetAsync(Url);
+            Response.EnsureSuccessStatusCode();
 
-            string responseBody = await response.Content.ReadAsStringAsync();
-            List<PersonajeAPI> listPersonajesAPI = JsonSerializer.Deserialize<List<PersonajeAPI>>(responseBody);
-            return listPersonajesAPI;
+            string ResponseBody = await Response.Content.ReadAsStringAsync();
+            List<PersonajeAPI> ListPersonajesAPI = JsonSerializer.Deserialize<List<PersonajeAPI>>(ResponseBody);
+            return ListPersonajesAPI;
         }
         catch (HttpRequestException e)
         {
@@ -132,21 +173,23 @@ public class FabricaDePersonajes
         }
     }
 
-    public static Personaje PersonajeAleatorio(List<PersonajeAPI> listPersonajesAPI)
+    // Función para generar un personaje aleatorio
+    public static Personaje PersonajeAleatorio(List<PersonajeAPI> ListPersonajesAPI)
     {
-        var Aleatorio = new Random();
-        int IndexAle = Aleatorio.Next(0, listPersonajesAPI.Count);
+        Random Aleatorio = new Random();
+        int IndexAle = Aleatorio.Next(0, ListPersonajesAPI.Count + 1);
 
-        PersonajeAPI PersonajeAleAPI = listPersonajesAPI[IndexAle];
+        PersonajeAPI PersonajeAleAPI = ListPersonajesAPI[IndexAle];
 
-        // Nombre y Género vienen desde la API
+        // Nombre y Género que vienen desde la API
+        string SexoAle = (PersonajeAleAPI.Gender == "female") ? "Femenino" : "Masculino";
         Datos Descripcion = new Datos
         {
             Nombre = PersonajeAleAPI.Name,
-            Genero = PersonajeAleAPI.Gender
+            Sexo = SexoAle
         };
 
-        // Ataque y Bloque son aleatorios, la salud es de 100
+        // Ataque y Bloqueo son aleatorios, la salud es de 100
         int AtaqueAle = Aleatorio.Next(1, 6); // 1 a 5
         int BloqueoAle = Aleatorio.Next(1, 6);
 

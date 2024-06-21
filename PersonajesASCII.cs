@@ -16,7 +16,7 @@ public class Animacion
     public static void PresentacionInicio(string NombrePP, string GeneroPP)
     {
         Console.SetCursorPosition(45, 10);
-        if (GeneroPP == "female")
+        if (GeneroPP == "Femenino")
         {
             Escribir($"Bienvenida {NombrePP}, te estaba esperando.", 60);
         }
