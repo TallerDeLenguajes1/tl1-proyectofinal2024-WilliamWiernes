@@ -1,5 +1,8 @@
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using EspacioPersonajeASCII;
+using EspacioPersistencia;
+using EspacioConsola;
 
 namespace EspacioPersonaje;
 
@@ -203,5 +206,68 @@ public class FabricaDePersonajes
         Personaje PersonajeAle = new Personaje(Descripcion, Habilidades);
 
         return PersonajeAle;
+    }
+
+    // Función para devolver ListPersonajes en base a si existe o no un Archivo Json
+    public async static Task<List<Personaje>> ListPersonajes(string NombreArchivo)
+    {
+        List<Personaje> ListPersonajes = new List<Personaje>();
+
+        if (PersonajesJson.Existe(NombreArchivo)) // Si existe y tiene datos
+        {
+            ListPersonajes = PersonajesJson.LeerPersonajes(NombreArchivo);
+            Console.WriteLine("Lista de Personajes Creada desde Json");
+        }
+        else // No existe, o existe pero no tiene datos
+        {
+            // Creación del Personaje Principal
+            Personaje PersonajePrincipal = CrearPersonajePrincipal();
+
+            // Lista Personajes API
+            List<PersonajeAPI> ListPersonajesAPI = await GetPersonajesAsync();
+
+            if (ListPersonajesAPI == null) // Si hay algún error con la API, corto la ejecución de la función
+            {
+                return null;
+            }
+
+            ListPersonajes.Add(PersonajePrincipal); // El Personaje Principal es siempre el primero
+
+            for (int i = 0; i < 9; i++)
+            {
+                Personaje PersonajeParaLista = PersonajeAleatorio(ListPersonajesAPI);
+                ListPersonajes.Add(PersonajeParaLista); // El resto de personajes son aleatorios
+            }
+
+            PersonajesJson.GuardarPersonajes(ListPersonajes, NombreArchivo);
+
+            Console.WriteLine("Lista y Json de Personajes Creada desde API");
+        }
+
+        return ListPersonajes;
+    }
+}
+
+public class MostrarPersonajes
+{
+    public static void Mostrar(List<Personaje> ListPersonajes)
+    {
+        Console.Clear();
+        Console.WriteLine("Participantes del Torneo:");
+
+        foreach (Personaje Personaje in ListPersonajes)
+        {
+            // Dibujo ASCII por encima de los Datos del Personaje
+            if (Personaje.Descripcion.Sexo == "Femenino")
+            {
+                Animacion.Dibujar(Animacion.PersonajeFemenino, 0);
+            }
+            else
+            {
+                Animacion.Dibujar(Animacion.PersonajeMasculino, 0);
+            }
+
+            Console.WriteLine($"Nombre: {Personaje.Descripcion.Nombre}\nSexo: {Personaje.Descripcion.Sexo}\nAtaque: {Personaje.Habilidades.Ataque}\nBloqueo: {Personaje.Habilidades.Bloqueo}\nSalud: {Personaje.Habilidades.Salud}");
+        }
     }
 }

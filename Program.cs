@@ -1,67 +1,47 @@
 ﻿using EspacioConsola;
 using EspacioPersonaje;
 using EspacioPersonajeASCII;
-using EspacioPersistencia;
+using EspacioGameplay;
+using System.Drawing;
 
 // Configuración de Consola antes de comenzar
-ConfiguracionConsola.Inicio();
+Consola ConsolaASCII = new Consola(170, 60, new Point(5, 3), new Point(165, 55)); // Ancho, Altura, Límites Superior e Inferior
+ConsolaASCII.ConfiguracionIncial();
 
 // Introducción
-Console.ForegroundColor = ConsoleColor.DarkCyan;
-Console.Clear();
 Animacion.Dibujar(Animacion.TituloInicio, 0);
-ConfiguracionConsola.Continuar(); // Presiona para continuar...
+Consola.Continuar(); // Presiona para continuar...
+Console.Clear();
 
-// Implementación del juego
+// Implementación del juego, Lista de Personajes
 string NombreArchivo = "Personajes.json";
-List<Personaje> ListPersonajes = new List<Personaje>(); // Lista Principal de Personajes
+List<Personaje> ListPersonajes = await FabricaDePersonajes.ListPersonajes(NombreArchivo); // Lista Principal de Personajes
 
-// Comprobando la existencia de Json de Personajes
-if (PersonajesJson.Existe(NombreArchivo)) // Si existe y tiene datos
-{
-    ListPersonajes = PersonajesJson.LeerPersonajes(NombreArchivo);
-    Console.WriteLine("Lista de Personajes Creada desde Json");
+if (ListPersonajes == null) // Si hay un problema con ListPersonajes, corto la ejecución del programa
+    return;
 
-    Console.Clear();
-    Animacion.Dibujar(Animacion.HarryPotter, 1);
-    // El Personaje Principal tiene que ser el primero del Json
-    Animacion.PresentacionInicio(ListPersonajes[0].Descripcion.Nombre, ListPersonajes[0].Descripcion.Sexo);
-    Console.SetCursorPosition(45, 24);
-    ConfiguracionConsola.Continuar();
-}
-else // No existe, o existe pero no tiene datos
-{
-    // Creación del Personaje Principal
-    Personaje PersonajePrincipal = FabricaDePersonajes.CrearPersonajePrincipal();
+Consola.Continuar();
+Console.Clear();
 
-    // Lista Personajes API
-    List<PersonajeAPI> ListPersonajesAPI = await FabricaDePersonajes.GetPersonajesAsync();
-    if (ListPersonajesAPI == null) // Si hay algún error con la API, corto la ejecución del programa
-    {
-        return;
-    }
-
-    ListPersonajes.Add(PersonajePrincipal); // El Personaje Principal es siempre el primero
-
-    Console.Clear();
-    Animacion.Dibujar(Animacion.HarryPotter, 1);
-    Animacion.PresentacionInicio(ListPersonajes[0].Descripcion.Nombre, ListPersonajes[0].Descripcion.Sexo);
-    Console.SetCursorPosition(45, 24);
-    ConfiguracionConsola.Continuar();
-
-    for (int i = 0; i < 9; i++)
-    {
-        Personaje PersonajeParaLista = FabricaDePersonajes.PersonajeAleatorio(ListPersonajesAPI);
-        ListPersonajes.Add(PersonajeParaLista); // El resto de personajes son aleatorios
-    }
-
-    PersonajesJson.GuardarPersonajes(ListPersonajes, NombreArchivo);
-
-    Console.WriteLine("Lista de Personajes Creada desde API");
-}
+Animacion.Dibujar(Animacion.HarryPotter, 1);
+Animacion.PresentacionInicio(ListPersonajes[0].Descripcion.Nombre, ListPersonajes[0].Descripcion.Sexo);// El Personaje Principal es el Primero de la lista
+Console.SetCursorPosition(45, 24);
+Consola.Continuar();
+Console.Clear();
 
 // Mostrar por pantalla los Personajes
-foreach (var Personaje in ListPersonajes)
+MostrarPersonajes.Mostrar(ListPersonajes);
+Consola.Continuar();
+Console.Clear();
+
+// Gameplay
+ConsolaASCII.DibujarMarco();
+
+PersonajePrincipalASCII PersonajePrincipalASCII = new PersonajePrincipalASCII(new Point(10, 45), ConsolaASCII);
+
+bool Jugar = true;
+
+while (Jugar)
 {
-    Console.WriteLine($"Nombre: {Personaje.Descripcion.Nombre}\nSexo: {Personaje.Descripcion.Sexo}\nAtaque: {Personaje.Habilidades.Ataque}\nBloqueo: {Personaje.Habilidades.Bloqueo}\nSalud: {Personaje.Habilidades.Salud}");
+    PersonajePrincipalASCII.Mover(1);
 }

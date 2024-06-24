@@ -39,7 +39,7 @@ public class PersonajesJson
 
     public static bool Existe(string NombreArchivo)
     {
-        if (File.Exists(NombreArchivo)) // Si el archivo no existe
+        if (File.Exists(NombreArchivo)) // Si el archivo existe
         {
             using (FileStream Archivo = new FileStream(NombreArchivo, FileMode.Open))
             {
@@ -48,7 +48,7 @@ public class PersonajesJson
                     string ListPersonajesJson = StrReader.ReadToEnd();
                     Archivo.Close();
 
-                    if (ListPersonajesJson != null)
+                    if (string.IsNullOrEmpty(ListPersonajesJson) != true)
                     {
                         return true; // Si existe y tiene datos
                     }
@@ -135,7 +135,7 @@ public class HistorialJson
                     string ListPersonajesJson = StrReader.ReadToEnd();
                     Archivo.Close();
 
-                    if (ListPersonajesJson != null)
+                    if (string.IsNullOrEmpty(ListPersonajesJson) != true)
                     {
                         return true; // Si existe y tiene datos
                     }

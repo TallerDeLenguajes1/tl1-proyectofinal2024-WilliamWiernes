@@ -1,0 +1,112 @@
+[
+    {
+        "Descripcion": {
+            "Nombre": "William",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 2,
+            "Bloqueo": 1,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Harper",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 3,
+            "Bloqueo": 3,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Vicky Frobisher",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 2,
+            "Bloqueo": 3,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Katie Bell",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 1,
+            "Bloqueo": 4,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Mandy Brocklehurst",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 3,
+            "Bloqueo": 2,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Seamus Finnigan",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 1,
+            "Bloqueo": 1,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Euan Abercrombie",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 5,
+            "Bloqueo": 1,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Rose Weasley",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 3,
+            "Bloqueo": 5,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Alicia Spinet",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 5,
+            "Bloqueo": 3,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Laura Madley",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 1,
+            "Bloqueo": 3,
+            "Salud": 100
+        }
+    }
+]
