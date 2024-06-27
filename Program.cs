@@ -23,11 +23,11 @@ if (ListPersonajes == null) // Si hay un problema con ListPersonajes, corto la e
 Consola.Continuar();
 Console.Clear();
 
-Animacion.Dibujar(Animacion.HarryPotter, 1);
+/* Animacion.Dibujar(Animacion.HarryPotter, 1);
 Animacion.PresentacionInicio(ListPersonajes[0].Descripcion.Nombre, ListPersonajes[0].Descripcion.Sexo);// El Personaje Principal es el Primero de la lista
 Console.SetCursorPosition(45, 24);
 Consola.Continuar();
-Console.Clear();
+Console.Clear(); */
 
 // Mostrar por pantalla los Personajes
 MostrarPersonajes.Mostrar(ListPersonajes);
@@ -37,11 +37,28 @@ Console.Clear();
 // Gameplay
 ConsolaASCII.DibujarMarco();
 
-PersonajePrincipalASCII PersonajePrincipalASCII = new PersonajePrincipalASCII(new Point(10, 45), ConsolaASCII);
+PersonajeASCII PersonajePrincipalASCII = new PersonajeASCII(new Point(20, 45), ConsolaASCII, ListPersonajes[0]);
+PersonajePrincipalASCII.MostrarNombre(PersonajePrincipalASCII.Posicion); // Mostrar Nombre del Personaje Principal
+
+// Lista de los Personajes Secundarios y Dibujado de los mismos
+List<PersonajeASCII> ListPersonajesSecundariosASCII = PersonajePrincipalASCII.ListPersonajesSecundariosASCII(ListPersonajes, ConsolaASCII);
 
 bool Jugar = true;
 
 while (Jugar)
 {
-    PersonajePrincipalASCII.Mover(1);
+    PersonajePrincipalASCII.Mover(1, ListPersonajesSecundariosASCII, PersonajePrincipalASCII, ConsolaASCII);
+    foreach (PersonajeASCII PersonajeSecundarioASCII in ListPersonajesSecundariosASCII)
+    {
+        if (ListPersonajesSecundariosASCII != null)
+        {
+            PersonajeSecundarioASCII.MostrarNombre(PersonajeSecundarioASCII.Posicion);
+            PersonajeSecundarioASCII.Dibujar();
+        }
+        else
+        {
+            Jugar = false;
+            return;
+        }
+    }
 }

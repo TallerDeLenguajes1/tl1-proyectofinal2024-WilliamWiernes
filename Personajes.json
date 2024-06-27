@@ -6,35 +6,68 @@
         },
         "Habilidades": {
             "Ataque": 2,
+            "Bloqueo": 2,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Graham Montague",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 4,
+            "Bloqueo": 4,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Euan Abercrombie",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 3,
+            "Bloqueo": 5,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Eloise Midgen",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 5,
             "Bloqueo": 1,
             "Salud": 100
         }
     },
     {
         "Descripcion": {
-            "Nombre": "Harper",
+            "Nombre": "Jimmy Peakes",
             "Sexo": "Masculino"
         },
         "Habilidades": {
-            "Ataque": 3,
-            "Bloqueo": 3,
+            "Ataque": 1,
+            "Bloqueo": 1,
             "Salud": 100
         }
     },
     {
         "Descripcion": {
-            "Nombre": "Vicky Frobisher",
-            "Sexo": "Femenino"
+            "Nombre": "Lee Jordan",
+            "Sexo": "Masculino"
         },
         "Habilidades": {
             "Ataque": 2,
-            "Bloqueo": 3,
+            "Bloqueo": 5,
             "Salud": 100
         }
     },
     {
         "Descripcion": {
-            "Nombre": "Katie Bell",
+            "Nombre": "Romilda Vane",
             "Sexo": "Femenino"
         },
         "Habilidades": {
@@ -45,67 +78,34 @@
     },
     {
         "Descripcion": {
-            "Nombre": "Mandy Brocklehurst",
-            "Sexo": "Femenino"
+            "Nombre": "Marcus Belby",
+            "Sexo": "Masculino"
         },
         "Habilidades": {
             "Ataque": 3,
+            "Bloqueo": 4,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Marcus Belby",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 2,
             "Bloqueo": 2,
             "Salud": 100
         }
     },
     {
         "Descripcion": {
-            "Nombre": "Seamus Finnigan",
+            "Nombre": "Peregrine Derrick",
             "Sexo": "Masculino"
         },
         "Habilidades": {
             "Ataque": 1,
             "Bloqueo": 1,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Euan Abercrombie",
-            "Sexo": "Masculino"
-        },
-        "Habilidades": {
-            "Ataque": 5,
-            "Bloqueo": 1,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Rose Weasley",
-            "Sexo": "Femenino"
-        },
-        "Habilidades": {
-            "Ataque": 3,
-            "Bloqueo": 5,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Alicia Spinet",
-            "Sexo": "Femenino"
-        },
-        "Habilidades": {
-            "Ataque": 5,
-            "Bloqueo": 3,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Laura Madley",
-            "Sexo": "Femenino"
-        },
-        "Habilidades": {
-            "Ataque": 1,
-            "Bloqueo": 3,
             "Salud": 100
         }
     }
