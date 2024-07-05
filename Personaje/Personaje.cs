@@ -248,6 +248,7 @@ public class FabricaDePersonajes
     }
 }
 
+// Función para mostrar lista de personajes, destacando sus datos y características
 public class MostrarPersonajes
 {
     public static void Mostrar(List<Personaje> ListPersonajes)

@@ -1,14 +1,15 @@
 using System.Drawing;
 using System.Dynamic;
 using EspacioConsola;
+using EspacioPersistencia;
 using EspacioPersonaje;
 using EspacioPersonajeASCII;
 
 namespace EspacioGameplay;
 public class PersonajeASCII
 {
-    private Point posicion; // Posición inicial Dentro del Marco
-    private Consola consolaPP; // Para el Sistema de Colisiones con el Marco
+    private Point posicion; // Posición Inicial dentro del marco
+    private Consola consolaPP; // Para el sistema de colisiones con el marco
     private List<Point> posicionesPersonajePrincipal;
 
     private Personaje personaje;
@@ -96,7 +97,7 @@ public class PersonajeASCII
         PosicionesPersonajePrincipal.Add(new Point(X + 7, Y + 6));
     }
 
-    // Función que Imprime un Caracter en Blanco en cada Punto donde el Personaje tiene Caracteres
+    // Función que imprime un caracter en blanco en cada Punto donde el Personaje Principal tiene caracteres
     public void Borrar()
     {
         foreach (Point Posicion in PosicionesPersonajePrincipal)
@@ -106,7 +107,7 @@ public class PersonajeASCII
         }
     }
 
-    // Función que Detecta la Tecla pulsada, y Reajusta la Posición del Personaje
+    // Función que detecta la tecla pulsada, y reajusta la Posición del Personaje Principal
     public static void Teclado(ref Point PosicionActual, int Velocidad) // Se pasa por Referencia la PosicionActual
     {
         ConsoleKeyInfo Tecla = Console.ReadKey(true);
@@ -127,50 +128,28 @@ public class PersonajeASCII
         PosicionActual.Y *= Velocidad;
     }
 
-    // Función que se fija si el Personaje tocó el Marco y Reajusta su Posición
+    // Función que se fija si el Personaje Principal tocó el marco y reajusta su Posición
     public void Colisiones(Point PosicionActual)
     {
         Point PosicionAux = new Point(Posicion.X + PosicionActual.X, Posicion.Y + PosicionActual.Y);
 
-        if (PosicionAux.X <= ConsolaPP.LimiteSuperior.X) // Marco Izquierdo
+        if (PosicionAux.X <= ConsolaPP.LimiteSuperior.X) // Marco izquierdo
             PosicionAux.X = ConsolaPP.LimiteSuperior.X + 1;
 
-        if (PosicionAux.X + 7 >= ConsolaPP.LimiteInferior.X) // Marco Derecho
+        if (PosicionAux.X + 7 >= ConsolaPP.LimiteInferior.X) // Marco derecho
             PosicionAux.X = ConsolaPP.LimiteInferior.X - 8;
 
-        if (PosicionAux.Y <= ConsolaPP.LimiteSuperior.Y) // Marco Arriba
+        if (PosicionAux.Y <= ConsolaPP.LimiteSuperior.Y) // Marco arriba
             PosicionAux.Y = ConsolaPP.LimiteSuperior.Y + 1;
 
-        if (PosicionAux.Y + 6 >= ConsolaPP.LimiteInferior.Y) // Marco Abajo
+        if (PosicionAux.Y + 6 >= ConsolaPP.LimiteInferior.Y) // Marco abajo
             PosicionAux.Y = ConsolaPP.LimiteInferior.Y - 7;
 
         Posicion = PosicionAux;
     }
 
-    // Función que Detecta al Colisión del Personaje Principal con uno Secundario, y retorna el Peronsaje Secundario
-    public PersonajeASCII ColisionesPersonajes(Point Posicion, List<PersonajeASCII> ListPersonajesSecundariosASCII)
-    {
-        int i = 0;
-        foreach (PersonajeASCII PersonajeSecundarioASCII in ListPersonajesSecundariosASCII)
-        {
-            if (i < 4)
-            {
-                if (Posicion.X - 6 == PersonajeSecundarioASCII.Posicion.X && Posicion.Y == PersonajeSecundarioASCII.Posicion.Y)
-                    return PersonajeSecundarioASCII;
-            }
-            else
-            {
-                if (Posicion.X + 6 == PersonajeSecundarioASCII.Posicion.X && Posicion.Y == PersonajeSecundarioASCII.Posicion.Y)
-                    return PersonajeSecundarioASCII;
-            }
-            i++;
-        }
-
-        return null;
-    }
-
-    // Función para el Movimiento del Personaje, teniendo en cuenta la Tecla Pulsada y las Colisiones con el Marco y los Personajes Secundarios,
-    // donde si Colisiona con uno se activa el Sistema de Combate
+    // Función para el Movimiento del Personaje Principal, teniendo en cuenta la tecla pulsada y las colisiones con el marco y los Personajes Secundarios,
+    // donde si colisiona con uno se activa el sistema de combate
     public void Mover(int Velocidad, List<PersonajeASCII> ListPersonajesSecundariosASCII, PersonajeASCII PersonajePrincipalASCII, Consola ConsolaASCII)
     {
         if (Console.KeyAvailable)
@@ -189,10 +168,10 @@ public class PersonajeASCII
         Dibujar();
     }
 
-
+    // Función para poner el nombre del personaje sobre su cabeza, tomando en cuenta la Posición con la que fue creado
     public void MostrarNombre(Point Posicion)
     {
-        Console.SetCursorPosition(Posicion.X, Posicion.Y - 1); // Poner el Nombre del Personaje sobre su Cabeza
+        Console.SetCursorPosition(Posicion.X, Posicion.Y - 1);
         Console.Write($"[{Personaje.Descripcion.Nombre}]");
     }
 
@@ -220,12 +199,32 @@ public class PersonajeASCII
         return ListPersonajesSecundariosASCII;
     }
 
-    // Función para el Sistema de Combate cuando el Personaje Principal Colisiona con una Secundario
+    // Función que detecta la colisión del Personaje Principal con uno Secundario, y retorna al Secundario
+    public PersonajeASCII ColisionesPersonajes(Point Posicion, List<PersonajeASCII> ListPersonajesSecundariosASCII)
+    {
+        foreach (PersonajeASCII PersonajeSecundarioASCII in ListPersonajesSecundariosASCII)
+        {
+            if (PersonajeSecundarioASCII.Posicion.X <= 20)
+            {
+                if (Posicion.X - 6 == PersonajeSecundarioASCII.Posicion.X && Posicion.Y == PersonajeSecundarioASCII.Posicion.Y)
+                    return PersonajeSecundarioASCII;
+            }
+            else
+            {
+                if (Posicion.X + 6 == PersonajeSecundarioASCII.Posicion.X && Posicion.Y == PersonajeSecundarioASCII.Posicion.Y)
+                    return PersonajeSecundarioASCII;
+            }
+        }
+
+        return null;
+    }
+
+    // Función para el sistema de combate cuando el Personaje Principal colisiona con uno Secundario
     public static void Combate(PersonajeASCII PersonajeSecundarioASCII, PersonajeASCII PersonajePrincipalASCII, Consola ConsolaASCII, List<PersonajeASCII> ListPersonajesSecundariosASCII)
     {
         if (PersonajeSecundarioASCII != null)
         {
-            // Animación Inicio de cada Combate
+            // Animación inicio de cada Combate
             Console.Clear();
             Console.SetCursorPosition(ConsolaASCII.Ancho / 2 - PersonajePrincipalASCII.Personaje.Descripcion.Nombre.Length - 4, ConsolaASCII.Altura / 2);
             Animacion.Escribir($"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} VS {PersonajeSecundarioASCII.Personaje.Descripcion.Nombre}", 150);
@@ -233,8 +232,8 @@ public class PersonajeASCII
             Console.Clear();
 
             // Combate
-            bool Turno = true;
-            do
+            bool Turno = true; // Cambia su valor booleano continuamente, en base a esto se determina que personaje ataca y cuál defiende
+            while (PersonajePrincipalASCII.Personaje.Habilidades.Salud > 0 && PersonajeSecundarioASCII.Personaje.Habilidades.Salud > 0)
             {
                 int DanioProvocado;
                 if (Turno)
@@ -310,7 +309,7 @@ public class PersonajeASCII
                         Animacion.Dibujar(Animacion.PersonajeMasculino, 0);
                     }
 
-                    // Daño y Actualización de Salud 
+                    // Daño y actualización de salud 
                     DanioProvocado = Danio(PersonajePrincipalASCII.Personaje, PersonajeSecundarioASCII.Personaje, Turno);
                     PersonajePrincipalASCII.Personaje.Habilidades.Salud -= DanioProvocado;
 
@@ -324,51 +323,72 @@ public class PersonajeASCII
                     Consola.Continuar();
                 }
 
-                Turno = !Turno;
-            } while (PersonajePrincipalASCII.Personaje.Habilidades.Salud > 0 && PersonajeSecundarioASCII.Personaje.Habilidades.Salud > 0);
-
-            // Después del Combate
-            Console.Clear();
-            if (PersonajePrincipalASCII.Personaje.Habilidades.Salud > 0)
-            {
-                // Devolver salud al 100
-                PersonajePrincipalASCII.Personaje.Habilidades.Salud = 100;
-
-                // Mejora de Habilidades al Personaje Principal
-                PersonajePrincipalASCII.Personaje.Habilidades.Ataque += 1;
-                PersonajePrincipalASCII.Personaje.Habilidades.Bloqueo += 1;
-
-                // Eliminar al Personaje Secundario Derrotado
-                ListPersonajesSecundariosASCII.Remove(PersonajeSecundarioASCII);
-
-                // Guardar Datos de la Batalla
-
-
-                Animacion.Dibujar(Animacion.Victoria, 0);
-                Console.WriteLine("Mejora otorgada. +1 en Ataque y Bloqueo");
-                Consola.Continuar();
-                Console.Clear();
+                Turno = !Turno; // Cambia el turno
             }
-            else
+
+            // Después del combate
+            Console.Clear();
+
+            // Si perdió el Personaje Principal
+            if (PersonajePrincipalASCII.Personaje.Habilidades.Salud <= 0)
             {
                 Animacion.Dibujar(Animacion.Derrota, 0);
-                Consola.Continuar();
-                Console.Clear();
-                Environment.Exit(0); // Terminar el juego y el programa
+                Environment.Exit(0); // Termina el juego y el programa
             }
+
+            // Mensaje de Victoria
+            Console.WriteLine("Haz derrotado a tu rival!");
+
+            // Salud reestablecida al 100
+            PersonajePrincipalASCII.Personaje.Habilidades.Salud = 100;
+
+            // Eliminar al personaje secundario derrotado
+            ListPersonajesSecundariosASCII.Remove(PersonajeSecundarioASCII);
+
+            // Si hay Personajes Secundarios, se hace mejora. Sino pide mejorar cuando no quedán más personajes para derrotar
+            if (ListPersonajesSecundariosASCII.Count > 0)
+            {
+                // Mejora de habilidades al Personaje Principal
+                int SeleccionMejora;
+
+                Console.WriteLine("Elige tu mejora");
+                Console.WriteLine("1. +1 en Ataque");
+                Console.WriteLine("2. +1 en Bloque");
+
+                do
+                {
+                    Console.WriteLine("Selección: ");
+                    int.TryParse(Console.ReadLine(), out SeleccionMejora);
+                } while (SeleccionMejora != 1 && SeleccionMejora != 2);
+
+                if (SeleccionMejora == 1)
+                {
+                    PersonajePrincipalASCII.Personaje.Habilidades.Ataque += 1;
+                    Console.WriteLine("Se otorgó +1 en Ataque");
+                }
+                else
+                {
+                    PersonajePrincipalASCII.Personaje.Habilidades.Bloqueo += 1;
+                    Console.WriteLine("Se otorgó +1 en Bloqueo");
+                }
+            }
+
+            Consola.Continuar();
+            Console.Clear();
 
             ConsolaASCII.DibujarMarco();
             PersonajePrincipalASCII.MostrarNombre(new Point(20, 45));
         }
     }
 
+    // Función que determina el daño provocado en base al turno, al ataque y el bloqueo de los Personajes
     public static int Danio(Personaje PersonajePrincipal, Personaje PersonajeSecundario, bool Turno)
     {
         var Aleatorio = new Random();
         int Efectividad = Aleatorio.Next(1, 101);
         int ConstanteAjuste = 20;
         int Danio;
-        
+
         if (Turno)
         {
             Danio = ((PersonajePrincipal.Habilidades.Ataque * Efectividad) - PersonajeSecundario.Habilidades.Bloqueo) / ConstanteAjuste;

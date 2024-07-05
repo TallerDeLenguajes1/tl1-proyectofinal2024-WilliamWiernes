@@ -23,7 +23,7 @@ if (ListPersonajes == null) // Si hay un problema con ListPersonajes, corto la e
 Consola.Continuar();
 Console.Clear();
 
-/* Animacion.Dibujar(Animacion.HarryPotter, 1);
+/* Animacion.Dibujar(Animacion.HarryPotter, 0);
 Animacion.PresentacionInicio(ListPersonajes[0].Descripcion.Nombre, ListPersonajes[0].Descripcion.Sexo);// El Personaje Principal es el Primero de la lista
 Console.SetCursorPosition(45, 24);
 Consola.Continuar();
@@ -50,15 +50,19 @@ while (Jugar)
     PersonajePrincipalASCII.Mover(1, ListPersonajesSecundariosASCII, PersonajePrincipalASCII, ConsolaASCII);
     foreach (PersonajeASCII PersonajeSecundarioASCII in ListPersonajesSecundariosASCII)
     {
-        if (ListPersonajesSecundariosASCII != null)
+        if (PersonajeSecundarioASCII != null)
         {
             PersonajeSecundarioASCII.MostrarNombre(PersonajeSecundarioASCII.Posicion);
             PersonajeSecundarioASCII.Dibujar();
         }
-        else
-        {
-            Jugar = false;
-            return;
-        }
+    }
+
+    // Verificar si todos los personajes secundarios han sido derrotados
+    if (ListPersonajesSecundariosASCII.Count == 0)
+    {
+        Console.Clear();
+        Animacion.Dibujar(Animacion.Victoria, 0); // Animación de Victoria, termina el juego
+        Jugar = false;
+        Consola.Continuar();
     }
 }

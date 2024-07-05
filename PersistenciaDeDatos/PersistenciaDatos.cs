@@ -66,17 +66,17 @@ public class PersonajesJson
     }
 }
 
-public class InformacionPartida(int NumPartida, Personaje Personaje1, Personaje Personaje2, string NombreGanador)
+public class InformacionPartida(Personaje Personaje1, Personaje Personaje2, string NombreGanador, DateTime Dia)
 {
-    private int numPartida = NumPartida; // Id incremental
     private Personaje personaje1 = Personaje1;
     private Personaje personaje2 = Personaje2;
     private string nombreGanador = NombreGanador;
+    private DateTime dia = Dia;
 
-    public int NumPartida { get => numPartida; set => numPartida = value; }
     public Personaje Personaje1 { get => personaje1; set => personaje1 = value; }
     public Personaje Personaje2 { get => personaje2; set => personaje2 = value; }
     public string Ganador { get => nombreGanador; set => nombreGanador = value; }
+    public DateTime Dia { get => dia; set => dia = value; }
 }
 
 public class HistorialJson
