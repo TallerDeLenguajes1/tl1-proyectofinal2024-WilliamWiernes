@@ -3,6 +3,7 @@ using EspacioPersonaje;
 using EspacioPersonajeASCII;
 using EspacioGameplay;
 using System.Drawing;
+using EspacioPersistencia;
 
 // Configuración de Consola antes de comenzar
 Consola ConsolaASCII = new Consola(170, 60, new Point(5, 3), new Point(165, 55)); // Ancho, Altura, Límites Superior e Inferior
@@ -42,13 +43,14 @@ PersonajePrincipalASCII.MostrarNombre(PersonajePrincipalASCII.Posicion);
 
 // Lista de los Personajes Secundarios
 List<PersonajeASCII> ListPersonajesSecundariosASCII = PersonajeASCII.ListPersonajesSecundariosASCII(ListPersonajes, ConsolaASCII);
+string NombreArchivoHistorial = "HistorialGanadores.json";
 
 bool Jugar = true;
 
 while (Jugar)
 {
     PersonajePrincipalASCII.Mover(1, ListPersonajesSecundariosASCII, PersonajePrincipalASCII, ConsolaASCII);
-    
+
     foreach (PersonajeASCII PersonajeSecundarioASCII in ListPersonajesSecundariosASCII)
     {
         if (PersonajeSecundarioASCII != null)
@@ -61,6 +63,12 @@ while (Jugar)
     // Verificar si todos los personajes secundarios han sido derrotados
     if (ListPersonajesSecundariosASCII.Count == 0)
     {
+        // Guardo el Personaje en el Historial de Ganadores
+        DateTime Dia = DateTime.Now;
+        PersonajeGanador PersonajePrincipalGanador = new PersonajeGanador(PersonajePrincipalASCII.Personaje, Dia);
+
+        HistorialJson.GuardarGanador(PersonajePrincipalGanador, NombreArchivoHistorial);
+
         Console.Clear();
         Animacion.Dibujar(ASCII.Victoria, 0); // Animación de Victoria
         Jugar = false; // Termina el juego

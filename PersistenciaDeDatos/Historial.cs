@@ -3,60 +3,53 @@ using System.Text.Json;
 
 namespace EspacioPersistencia;
 
-public class InformacionPartida(Personaje Personaje1, Personaje Personaje2, string NombreGanador, DateTime Dia)
+public class PersonajeGanador(Personaje Personaje, DateTime Dia)
 {
-    private Personaje personaje1 = Personaje1;
-    private Personaje personaje2 = Personaje2;
-    private string nombreGanador = NombreGanador;
+    private Personaje personaje = Personaje;
     private DateTime dia = Dia;
 
-    public Personaje Personaje1 { get => personaje1; set => personaje1 = value; }
-    public Personaje Personaje2 { get => personaje2; set => personaje2 = value; }
-    public string Ganador { get => nombreGanador; set => nombreGanador = value; }
+    public Personaje Personaje { get => personaje; set => personaje = value; }
     public DateTime Dia { get => dia; set => dia = value; }
 }
 
 public class HistorialJson
 {
-    public class Historial(List<Personaje> ListPersonajesGanadores, List<InformacionPartida> ListInformacionPartidas)
+    public static void GuardarGanador(PersonajeGanador PersonajeGanador, string NombreArchivo)
     {
-        private List<Personaje> listPersonajesGanadores = ListPersonajesGanadores;
-        private List<InformacionPartida> listInformacionPartidas = ListInformacionPartidas;
+        List<PersonajeGanador> ListPersonajesGanadores = LeerGanadores(NombreArchivo); // Leo la Lista de Personajes Ganadores anteriores
+        ListPersonajesGanadores.Add(PersonajeGanador);                                 // Y añado el nuevo Personaje Ganador a esa lista
 
-        public List<Personaje> ListPersonajesGanadores { get => listPersonajesGanadores; set => listPersonajesGanadores = value; }
-        public List<InformacionPartida> ListInformacionPartidas { get => listInformacionPartidas; set => listInformacionPartidas = value; }
-    }
-
-    public void GuardarGanadores(List<Personaje> ListPersonajesGanadores, List<InformacionPartida> ListInformacionPartidas, string NombreArchivo)
-    {
-        Historial HistorialGanadoresInformacionPartidas = new Historial(ListPersonajesGanadores, ListInformacionPartidas);
-
-        string HistorialGanadoresInformacionPartidasJson = JsonSerializer.Serialize(HistorialGanadoresInformacionPartidas);
+        string ListPersonajesGanadoresJson = JsonSerializer.Serialize(ListPersonajesGanadores);
 
         using (FileStream Archivo = new FileStream(NombreArchivo, FileMode.Create))
         {
             using (StreamWriter StrWriter = new StreamWriter(Archivo))
             {
-                StrWriter.WriteLine("{0}", HistorialGanadoresInformacionPartidasJson);
+                StrWriter.WriteLine("{0}", ListPersonajesGanadoresJson);
                 StrWriter.Close();
-                Console.WriteLine("Json de Personaje Ganador e Información de Partidas creado.");
+
+                Console.WriteLine("Personaje Ganador añadido a Json.");
             }
         }
     }
 
-    public static List<Personaje> LeerGanadores(string NombreArchivo)
+    public static List<PersonajeGanador> LeerGanadores(string NombreArchivo)
     {
+        if (!Existe(NombreArchivo)) // Si el archivo no existe, devuelvo una Lista Vacía
+        {
+            return new List<PersonajeGanador>();
+        }
+
         using (FileStream Archivo = new FileStream(NombreArchivo, FileMode.Open))
         {
             using (StreamReader StrReader = new StreamReader(Archivo))
             {
-                string HistorialGanadoresInformacionPartidasJson = StrReader.ReadToEnd();
+                string PersonajesGanadoresJson = StrReader.ReadToEnd();
                 Archivo.Close();
-                Console.WriteLine("Lista de Ganadores e Información de Partidas leída.");
 
-                Historial HistorialGanadoresInformacionPartidas = JsonSerializer.Deserialize<Historial>(HistorialGanadoresInformacionPartidasJson);
+                List<PersonajeGanador> ListPersonajesGanadores = JsonSerializer.Deserialize<List<PersonajeGanador>>(PersonajesGanadoresJson);
 
-                return HistorialGanadoresInformacionPartidas.ListPersonajesGanadores;
+                return ListPersonajesGanadores;
             }
         }
     }
