@@ -11,7 +11,6 @@ public partial class PersonajeASCII
     private Point posicion; // Posición Inicial dentro del marco
     private Consola consolaPP; // Para el sistema de colisiones con el marco
     private List<Point> posicionesPersonajePrincipal;
-
     private Personaje personaje;
 
     public Point Posicion { get => posicion; set => posicion = value; }
@@ -35,7 +34,7 @@ public partial class PersonajeASCII
     }
 
     // Función para crear Lista de Personajes Secundarios junto a sus Posiciones dentro del Marco
-    public List<PersonajeASCII> ListPersonajesSecundariosASCII(List<Personaje> ListPersonajes, Consola ConsolaASCII)
+    public static List<PersonajeASCII> ListPersonajesSecundariosASCII(List<Personaje> ListPersonajes, Consola ConsolaASCII)
     {
         List<PersonajeASCII> ListPersonajesSecundariosASCII = new List<PersonajeASCII>();
         int j = 0;

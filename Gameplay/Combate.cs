@@ -143,7 +143,7 @@ public partial class PersonajeASCII
 
                 Console.WriteLine("Elige tu mejora");
                 Console.WriteLine("1. +1 en Ataque");
-                Console.WriteLine("2. +1 en Bloque");
+                Console.WriteLine("2. +1 en Bloqueo");
 
                 do
                 {
@@ -153,13 +153,30 @@ public partial class PersonajeASCII
 
                 if (SeleccionMejora == 1)
                 {
-                    PersonajePrincipalASCII.Personaje.Habilidades.Ataque += 1;
-                    Console.WriteLine("Se otorgó +1 en Ataque");
+                    // Evito que el Ataque aumente si ya está al máximo
+                    if (PersonajePrincipalASCII.Personaje.Habilidades.Ataque < 5)
+                    {
+                        PersonajePrincipalASCII.Personaje.Habilidades.Ataque += 1;
+                        Console.WriteLine("Se otorgó +1 en Ataque");
+                    }
+                    else
+                    {
+                        Console.WriteLine("El Ataque está al máximo!");
+                    }
+
                 }
                 else
                 {
-                    PersonajePrincipalASCII.Personaje.Habilidades.Bloqueo += 1;
-                    Console.WriteLine("Se otorgó +1 en Bloqueo");
+                    // Evito que el Bloqueo aumente si ya está al máximo
+                    if (PersonajePrincipalASCII.Personaje.Habilidades.Bloqueo < 5)
+                    {
+                        PersonajePrincipalASCII.Personaje.Habilidades.Bloqueo += 1;
+                        Console.WriteLine("Se otorgó +1 en Bloqueo");
+                    }
+                    else
+                    {
+                        Console.WriteLine("El Bloqueo está al máximo!");
+                    }
                 }
             }
 

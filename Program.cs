@@ -38,16 +38,17 @@ Console.Clear();
 ConsolaASCII.DibujarMarco();
 
 PersonajeASCII PersonajePrincipalASCII = new PersonajeASCII(new Point(20, 45), ConsolaASCII, ListPersonajes[0]);
-PersonajePrincipalASCII.MostrarNombre(PersonajePrincipalASCII.Posicion); // Mostrar Nombre del Personaje Principal
+PersonajePrincipalASCII.MostrarNombre(PersonajePrincipalASCII.Posicion);
 
-// Lista de los Personajes Secundarios y Dibujado de los mismos
-List<PersonajeASCII> ListPersonajesSecundariosASCII = PersonajePrincipalASCII.ListPersonajesSecundariosASCII(ListPersonajes, ConsolaASCII);
+// Lista de los Personajes Secundarios
+List<PersonajeASCII> ListPersonajesSecundariosASCII = PersonajeASCII.ListPersonajesSecundariosASCII(ListPersonajes, ConsolaASCII);
 
 bool Jugar = true;
 
 while (Jugar)
 {
     PersonajePrincipalASCII.Mover(1, ListPersonajesSecundariosASCII, PersonajePrincipalASCII, ConsolaASCII);
+    
     foreach (PersonajeASCII PersonajeSecundarioASCII in ListPersonajesSecundariosASCII)
     {
         if (PersonajeSecundarioASCII != null)
@@ -61,8 +62,7 @@ while (Jugar)
     if (ListPersonajesSecundariosASCII.Count == 0)
     {
         Console.Clear();
-        Animacion.Dibujar(ASCII.Victoria, 0); // Animación de Victoria, termina el juego
-        Jugar = false;
-        Consola.Continuar();
+        Animacion.Dibujar(ASCII.Victoria, 0); // Animación de Victoria
+        Jugar = false; // Termina el juego
     }
 }
