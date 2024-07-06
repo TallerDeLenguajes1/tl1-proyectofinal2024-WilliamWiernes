@@ -9,7 +9,7 @@ Consola ConsolaASCII = new Consola(170, 60, new Point(5, 3), new Point(165, 55))
 ConsolaASCII.ConfiguracionIncial();
 
 // Introducción
-Animacion.Dibujar(Animacion.TituloInicio, 0);
+Animacion.Dibujar(ASCII.TituloInicio, 0);
 Consola.Continuar(); // Presiona para continuar...
 Console.Clear();
 
@@ -24,7 +24,7 @@ Consola.Continuar();
 Console.Clear();
 
 /* Animacion.Dibujar(Animacion.HarryPotter, 0);
-Animacion.PresentacionInicio(ListPersonajes[0].Descripcion.Nombre, ListPersonajes[0].Descripcion.Sexo);// El Personaje Principal es el Primero de la lista
+Animacion.PresentacionInicio(ListPersonajes[0].Descripcion.Nombre, ListPersonajes[0].Descripcion.Sexo); // El Personaje Principal es el Primero de la lista
 Console.SetCursorPosition(45, 24);
 Consola.Continuar();
 Console.Clear(); */
@@ -61,7 +61,7 @@ while (Jugar)
     if (ListPersonajesSecundariosASCII.Count == 0)
     {
         Console.Clear();
-        Animacion.Dibujar(Animacion.Victoria, 0); // Animación de Victoria, termina el juego
+        Animacion.Dibujar(ASCII.Victoria, 0); // Animación de Victoria, termina el juego
         Jugar = false;
         Consola.Continuar();
     }
