@@ -5,6 +5,7 @@ namespace EspacioPersistencia;
 
 public class PersonajesJson
 {
+    // Función para guardar una Lista de Personajes en un Json
     public static void GuardarPersonajes(List<Personaje> ListPersonajes, string NombreArchivo)
     {
         string ListPersonajesJson = JsonSerializer.Serialize(ListPersonajes); // Serializo la lista de personajes
@@ -20,6 +21,7 @@ public class PersonajesJson
         }
     }
 
+    // Función que retorna una Lista de Personajes desde un Json
     public static List<Personaje> LeerPersonajes(string NombreArchivo)
     {
         using (FileStream Archivo = new FileStream(NombreArchivo, FileMode.Open))
@@ -37,6 +39,7 @@ public class PersonajesJson
         }
     }
 
+    // Función que determina si un Archivo existe, no existe o existe pero no tiene datos
     public static bool Existe(string NombreArchivo)
     {
         if (File.Exists(NombreArchivo)) // Si el archivo existe

@@ -128,8 +128,8 @@ public class FabricaDePersonajes
             // Lista Personajes API
             List<PersonajeAPI> ListPersonajesAPI = await PersonajeAPI.GetPersonajesAsync();
 
-            if (ListPersonajesAPI == null) // Si hay algún error con la API, corto la ejecución de la función
-                return null;
+            if (ListPersonajesAPI == null) // Si hay algún error con la API corto la ejecución del Programa
+                Environment.Exit(0);
 
             ListPersonajes.Add(PersonajePrincipal); // El Personaje Principal es siempre el primero
 

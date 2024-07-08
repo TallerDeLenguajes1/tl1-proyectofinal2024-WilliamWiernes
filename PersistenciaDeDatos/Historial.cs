@@ -14,6 +14,7 @@ public class PersonajeGanador(Personaje Personaje, DateTime Dia)
 
 public class HistorialJson
 {
+    // Función para guardar el Personaje Ganador en un Json
     public static void GuardarGanador(PersonajeGanador PersonajeGanador, string NombreArchivo)
     {
         List<PersonajeGanador> ListPersonajesGanadores = LeerGanadores(NombreArchivo); // Leo la Lista de Personajes Ganadores anteriores
@@ -27,15 +28,15 @@ public class HistorialJson
             {
                 StrWriter.WriteLine("{0}", ListPersonajesGanadoresJson);
                 StrWriter.Close();
-
                 Console.WriteLine("Personaje Ganador añadido a Json.");
             }
         }
     }
 
+    // Función que retorna una Lista de Personajes Ganadores desde un Json
     public static List<PersonajeGanador> LeerGanadores(string NombreArchivo)
     {
-        if (!Existe(NombreArchivo)) // Si el archivo no existe, devuelvo una Lista Vacía
+        if (!Existe(NombreArchivo)) // Si el archivo no existe o exite pero no tiene datos, retorno una Lista vacía
         {
             return new List<PersonajeGanador>();
         }
@@ -46,7 +47,8 @@ public class HistorialJson
             {
                 string PersonajesGanadoresJson = StrReader.ReadToEnd();
                 Archivo.Close();
-
+                Console.WriteLine("Lista de Personajes Ganadores leída.");
+                
                 List<PersonajeGanador> ListPersonajesGanadores = JsonSerializer.Deserialize<List<PersonajeGanador>>(PersonajesGanadoresJson);
 
                 return ListPersonajesGanadores;
@@ -54,9 +56,10 @@ public class HistorialJson
         }
     }
 
+    // Función que determina si un Archivo existe, no existe o existe pero no tiene datos
     public static bool Existe(string NombreArchivo)
     {
-        if (File.Exists(NombreArchivo)) // Si el archivo no existe
+        if (File.Exists(NombreArchivo)) // Si el archivo existe
         {
             using (FileStream Archivo = new FileStream(NombreArchivo, FileMode.Open))
             {
