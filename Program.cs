@@ -1,14 +1,16 @@
 ﻿using EspacioConsola;
-using EspacioPersonaje;
 using EspacioPersonajeASCII;
-using EspacioGameplay;
-using EspacioPersistencia;
 using EspacioMenu;
 using System.Drawing;
+using System.Media;
 
 // Configuración de Consola antes de comenzar
 Consola ConsolaASCII = new Consola(170, 60, new Point(5, 3), new Point(165, 55)); // Ancho, Altura, Límites Superior e Inferior
 ConsolaASCII.ConfiguracionIncial();
+
+// Música loopeada
+SoundPlayer Cancion = new SoundPlayer(@"Musica\HedwigsTheme.wav");
+Cancion.PlayLooping();
 
 // Introducción
 Animacion.Dibujar(ASCII.TituloInicio, 0);

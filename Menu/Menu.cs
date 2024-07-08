@@ -3,7 +3,6 @@ using EspacioPersonaje;
 using EspacioPersonajeASCII;
 using EspacioGameplay;
 using EspacioPersistencia;
-using EspacioMenu;
 using System.Drawing;
 
 namespace EspacioMenu;
@@ -36,11 +35,11 @@ public class Menu
         Consola.Continuar();
         Console.Clear();
 
-        /* Animacion.Dibujar(Animacion.HarryPotter, 0);
+        Animacion.Dibujar(ASCII.HarryPotter, 0);
         Animacion.PresentacionInicio(ListPersonajes[0].Descripcion.Nombre, ListPersonajes[0].Descripcion.Sexo); // El Personaje Principal es el Primero de la lista
         Console.SetCursorPosition(45, 24);
         Consola.Continuar();
-        Console.Clear(); */
+        Console.Clear();
 
         // Mostrar por pantalla los Personajes
         MostrarPersonajes.Mostrar(ListPersonajes);
