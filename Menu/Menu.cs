@@ -18,7 +18,6 @@ public class Menu
         Animacion.Centrar(ASCII.Menu, ConsolaASCII, 0, 0);
         do
         {
-            Animacion.Centrar(["                                                                                                                                                   "], ConsolaASCII, 25, 0);
             Animacion.Centrar(["Selección: "], ConsolaASCII, 25, 0);
             Seleccion = Console.ReadLine();
         } while (Seleccion != "1" && Seleccion != "2" && Seleccion != "3" && Seleccion != "i" && Seleccion != "ii" && Seleccion != "iii" && Seleccion != "I" && Seleccion != "II" && Seleccion != "III");
@@ -47,7 +46,7 @@ public class Menu
         // Gameplay
         ConsolaASCII.DibujarMarco();
 
-        PersonajeASCII PersonajePrincipalASCII = new PersonajeASCII(new Point(20, 45), ConsolaASCII, ListPersonajes[0]);
+        PersonajeASCII PersonajePrincipalASCII = new PersonajeASCII(new Point(ConsolaASCII.LimiteInferior.X / 2, ConsolaASCII.LimiteInferior.Y - 8), ConsolaASCII, ListPersonajes[0]);
         PersonajePrincipalASCII.MostrarNombre(PersonajePrincipalASCII.Posicion);
 
         // Lista de los Personajes Secundarios

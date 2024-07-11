@@ -51,7 +51,6 @@ public class FabricaDePersonajes
         // Puede continuar únicamente cuando ingresa el género de forma correcta
         do
         {
-            Animacion.Centrar(["                                                                                                                                                   "], ConsolaASCII, 2, 0);
             Animacion.Centrar(["Y tu Sexo (F o M): "], ConsolaASCII, 2, 0);
             SexoPP = Console.ReadLine();
         } while (SexoPP != "F" && SexoPP != "M" && SexoPP != "f" && SexoPP != "m");
@@ -129,7 +128,7 @@ public class FabricaDePersonajes
 
             ListPersonajes.Add(PersonajePrincipal); // El Personaje Principal es siempre el primero
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Personaje PersonajeParaLista = PersonajeAleatorio(ListPersonajesAPI);
                 ListPersonajes.Add(PersonajeParaLista); // El resto de personajes son aleatorios

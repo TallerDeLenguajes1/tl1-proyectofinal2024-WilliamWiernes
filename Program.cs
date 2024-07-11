@@ -5,12 +5,15 @@ using System.Drawing;
 using System.Media;
 using EspacioPersonaje;
 
-// Configuración de Consola antes de comenzar
-List<PersonajeAPI> ListPersonajesAPI = await PersonajeAPI.GetPersonajesAsync(); // Genero la lista de Personajes API al comienzo del Programa
+// Genero la lista de Personajes API al comienzo del Programa
+List<PersonajeAPI> ListPersonajesAPI = await PersonajeAPI.GetPersonajesAsync(); 
 if (ListPersonajesAPI == null) // Si hay algún error con la API corto la ejecución del Programa
     Environment.Exit(0);
 
-Consola ConsolaASCII = new Consola(170, 60, new Point(5, 3), new Point(165, 55)); // Ancho, Altura, Límites Superior e Inferior
+// Configuración de Consola antes de comenzar
+int Ancho = 135; // 135 por defecto, no menos de 135 - no más de 150 (depende del monitor)
+int Altura = 60; // 60 por defecto, no menos de 30 - no más de 60 (depende del monitor) 
+Consola ConsolaASCII = new Consola(Ancho, Altura, new Point(5, 3), new Point(Ancho - 5, Altura - 5)); // Ancho, Altura, Límites Superior e Inferior
 ConsolaASCII.ConfiguracionIncial();
 
 // Música loopeada

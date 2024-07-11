@@ -37,21 +37,13 @@ public partial class PersonajeASCII
     public static List<PersonajeASCII> ListPersonajesSecundariosASCII(List<Personaje> ListPersonajes, Consola ConsolaASCII)
     {
         List<PersonajeASCII> ListPersonajesSecundariosASCII = new List<PersonajeASCII>();
-        int j = 0;
 
-        for (int i = 0; i < 9; i++)
+        int j = ConsolaASCII.LimiteSuperior.X + 1;
+        for (int i = 0; i < 5; i++)
         {
-            if (i < 4) // Se dibujan 4 a la Izquierda, el quinto es el Personaje Principal
-            {
-                PersonajeASCII PersonajeSecundarioASCII = new PersonajeASCII(new Point(20, 5 + (i * 10)), ConsolaASCII, ListPersonajes[i + 1]); // i + 1 debido a que la Posición 0 es del Personaje Principal
-                ListPersonajesSecundariosASCII.Add(PersonajeSecundarioASCII);
-            }
-            else // Los otros 5 a la Derecha
-            {
-                PersonajeASCII PersonajeSecundarioASCII = new PersonajeASCII(new Point(145, 5 + (j * 10)), ConsolaASCII, ListPersonajes[i + 1]);
-                ListPersonajesSecundariosASCII.Add(PersonajeSecundarioASCII);
-                j++;
-            }
+            PersonajeASCII PersonajeSecundarioASCII = new PersonajeASCII(new Point(j, ConsolaASCII.LimiteSuperior.Y + 2), ConsolaASCII, ListPersonajes[i + 1]); // i + 1 debido a que la Posición 0 es del Personaje Principal
+            ListPersonajesSecundariosASCII.Add(PersonajeSecundarioASCII);
+            j += 25;
         }
 
         return ListPersonajesSecundariosASCII;

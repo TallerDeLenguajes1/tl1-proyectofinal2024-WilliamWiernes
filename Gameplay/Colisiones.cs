@@ -34,16 +34,17 @@ public partial class PersonajeASCII
     {
         foreach (PersonajeASCII PersonajeSecundarioASCII in ListPersonajesSecundariosASCII)
         {
-            if (PersonajeSecundarioASCII.Posicion.X <= 20)
-            {
-                if (Posicion.X - 6 == PersonajeSecundarioASCII.Posicion.X && Posicion.Y == PersonajeSecundarioASCII.Posicion.Y)
-                    return PersonajeSecundarioASCII;
-            }
-            else
-            {
-                if (Posicion.X + 6 == PersonajeSecundarioASCII.Posicion.X && Posicion.Y == PersonajeSecundarioASCII.Posicion.Y)
-                    return PersonajeSecundarioASCII;
-            }
+            // Por derecha
+            if (Posicion.X - 6 == PersonajeSecundarioASCII.Posicion.X && Posicion.Y == PersonajeSecundarioASCII.Posicion.Y)
+                return PersonajeSecundarioASCII;
+
+            // Por izquierda
+            if (Posicion.X + 6 == PersonajeSecundarioASCII.Posicion.X && Posicion.Y == PersonajeSecundarioASCII.Posicion.Y)
+                return PersonajeSecundarioASCII;
+
+            // Por debajo
+            if (Posicion.X == PersonajeSecundarioASCII.Posicion.X && Posicion.Y - 6 == PersonajeSecundarioASCII.Posicion.Y)
+                return PersonajeSecundarioASCII;
         }
 
         return null;

@@ -199,7 +199,7 @@ public partial class PersonajeASCII
             Console.Clear();
 
             ConsolaASCII.DibujarMarco();
-            PersonajePrincipalASCII.MostrarNombre(new Point(20, 45));
+            PersonajePrincipalASCII.MostrarNombre(new Point(ConsolaASCII.LimiteInferior.X / 2, ConsolaASCII.LimiteInferior.Y - 8));
         }
     }
 
