@@ -16,7 +16,6 @@ public class PersonajesJson
             {
                 StrWriter.WriteLine("{0}", ListPersonajesJson);
                 StrWriter.Close();
-                Console.WriteLine("Json de Personajes creado.");
             }
         }
     }
@@ -30,7 +29,6 @@ public class PersonajesJson
             {
                 string ListPersonajesJson = StrReader.ReadToEnd();
                 Archivo.Close();
-                Console.WriteLine("Lista de Personajes leída.");
 
                 List<Personaje> ListPersonajes = JsonSerializer.Deserialize<List<Personaje>>(ListPersonajesJson);
 

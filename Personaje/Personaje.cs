@@ -3,6 +3,7 @@ using System.Text.Json;
 using EspacioPersonajeASCII;
 using EspacioPersistencia;
 using EspacioConsola;
+using System.Runtime.CompilerServices;
 
 namespace EspacioPersonaje;
 
@@ -38,18 +39,20 @@ public class Personaje(Datos Descripcion, Caracteristicas Habilidades)
 public class FabricaDePersonajes
 {
     // Función para crear al Personaje Principal
-    public static Personaje CrearPersonajePrincipal()
+    public static Personaje CrearPersonajePrincipal(Consola ConsolaASCII)
     {
         // Datos para el Personaje Principal
         string NombrePP, SexoPP;
-        Console.WriteLine("Antes de comenzar");
-        Console.Write("Ingresa tu Nombre: ");
+        Console.Clear();
+        Animacion.Centrar(["Antes de comenzar"], ConsolaASCII, 0, 0);
+        Animacion.Centrar(["Ingresa tu Nombre: "], ConsolaASCII, 1, 0);
         NombrePP = Console.ReadLine();
 
         // Puede continuar únicamente cuando ingresa el género de forma correcta
         do
         {
-            Console.Write("Y tu Sexo (F o M): ");
+            Animacion.Centrar(["                                                                                                                                                   "], ConsolaASCII, 2, 0);
+            Animacion.Centrar(["Y tu Sexo (F o M): "], ConsolaASCII, 2, 0);
             SexoPP = Console.ReadLine();
         } while (SexoPP != "F" && SexoPP != "M" && SexoPP != "f" && SexoPP != "m");
 
@@ -111,25 +114,18 @@ public class FabricaDePersonajes
     }
 
     // Función para devolver ListPersonajes en base a si existe o no un Archivo Json
-    public async static Task<List<Personaje>> ListPersonajes(string NombreArchivo)
+    public static List<Personaje> ListPersonajes(string NombreArchivo, Consola ConsolaASCII, List<PersonajeAPI> ListPersonajesAPI)
     {
         List<Personaje> ListPersonajes = new List<Personaje>();
 
         if (PersonajesJson.Existe(NombreArchivo)) // Si existe y tiene datos
         {
             ListPersonajes = PersonajesJson.LeerPersonajes(NombreArchivo);
-            Console.WriteLine("Lista de Personajes Creada desde Json");
         }
         else // No existe, o existe pero no tiene datos
         {
             // Creación del Personaje Principal
-            Personaje PersonajePrincipal = CrearPersonajePrincipal();
-
-            // Lista Personajes API
-            List<PersonajeAPI> ListPersonajesAPI = await PersonajeAPI.GetPersonajesAsync();
-
-            if (ListPersonajesAPI == null) // Si hay algún error con la API corto la ejecución del Programa
-                Environment.Exit(0);
+            Personaje PersonajePrincipal = CrearPersonajePrincipal(ConsolaASCII);            
 
             ListPersonajes.Add(PersonajePrincipal); // El Personaje Principal es siempre el primero
 
@@ -140,8 +136,6 @@ public class FabricaDePersonajes
             }
 
             PersonajesJson.GuardarPersonajes(ListPersonajes, NombreArchivo);
-
-            Console.WriteLine("Lista y Json de Personajes Creada desde API");
         }
 
         return ListPersonajes;
@@ -151,24 +145,30 @@ public class FabricaDePersonajes
 // Función para mostrar lista de personajes, destacando sus datos y características
 public class MostrarPersonajes
 {
-    public static void Mostrar(List<Personaje> ListPersonajes)
+    public static void Mostrar(List<Personaje> ListPersonajes, Consola ConsolaASCII)
     {
         Console.Clear();
-        Console.WriteLine("Participantes del Torneo:");
+        Animacion.Centrar(ASCII.Participantes, ConsolaASCII, 0, 0);
+
+        int Y = 16;
 
         foreach (Personaje Personaje in ListPersonajes)
         {
             // Dibujo ASCII por encima de los Datos del Personaje
             if (Personaje.Descripcion.Sexo == "Femenino")
             {
-                Animacion.Dibujar(ASCII.PersonajeFemenino, 0);
+                Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, Y, 0);
             }
             else
             {
-                Animacion.Dibujar(ASCII.PersonajeMasculino, 0);
+                Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, Y, 0);
             }
-
-            Console.WriteLine($"Nombre: {Personaje.Descripcion.Nombre}\nSexo: {Personaje.Descripcion.Sexo}\nAtaque: {Personaje.Habilidades.Ataque}\nBloqueo: {Personaje.Habilidades.Bloqueo}\nSalud: {Personaje.Habilidades.Salud}");
+            Animacion.Centrar([$"Nombre: {Personaje.Descripcion.Nombre}", $"Sexo: {Personaje.Descripcion.Sexo}", $"Ataque: {Personaje.Habilidades.Ataque}", $"Bloqueo: {Personaje.Habilidades.Bloqueo}", $"Salud: {Personaje.Habilidades.Salud}"], ConsolaASCII, Y + 21, 0);
+            Y += 25;
         }
+
+        Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, Y + 2, 1);
+        Animacion.EvitarTeclas();
+        Console.ReadKey();
     }
 }

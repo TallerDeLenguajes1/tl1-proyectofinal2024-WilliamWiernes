@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Dynamic;
+using System.Text;
 using EspacioConsola;
 using EspacioPersistencia;
 using EspacioPersonaje;
@@ -16,8 +17,7 @@ public partial class PersonajeASCII
         {
             // Animación inicio de cada Combate
             Console.Clear();
-            Console.SetCursorPosition(ConsolaASCII.Ancho / 2 - PersonajePrincipalASCII.Personaje.Descripcion.Nombre.Length - 4, ConsolaASCII.Altura / 2);
-            Animacion.Escribir($"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} VS {PersonajeSecundarioASCII.Personaje.Descripcion.Nombre}", 150);
+            Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} VS {PersonajeSecundarioASCII.Personaje.Descripcion.Nombre}"], ConsolaASCII, ConsolaASCII.Altura / 2, 150);
             Thread.Sleep(1000);
             Console.Clear();
 
@@ -30,30 +30,28 @@ public partial class PersonajeASCII
                 {
                     // Inicio
                     Console.Clear();
-                    Console.SetCursorPosition(0, 0);
-                    Console.Write($"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Ataca");
+                    Animacion.Centrar(ASCII.Combate, ConsolaASCII, 0, 0);
 
-                    Console.SetCursorPosition(0, 1);
-                    Console.Write($"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Defiende");
+                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Ataca"], ConsolaASCII, 10, 0);
 
-                    Console.SetCursorPosition(0, 2);
                     if (PersonajePrincipalASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {
-                        Animacion.Dibujar(ASCII.PersonajeFemenino, 0);
+                        Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, 11, 0);
                     }
                     else
                     {
-                        Animacion.Dibujar(ASCII.PersonajeMasculino, 0);
+                        Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, 11, 0);
                     }
 
-                    Console.SetCursorPosition(0, 22);
+                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Defiende"], ConsolaASCII, 33, 0);
+
                     if (PersonajeSecundarioASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {
-                        Animacion.Dibujar(ASCII.PersonajeFemenino, 0);
+                        Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, 34, 0);
                     }
                     else
                     {
-                        Animacion.Dibujar(ASCII.PersonajeMasculino, 0);
+                        Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, 34, 0);
                     }
 
                     // Daño y Actualización de Salud 
@@ -61,56 +59,56 @@ public partial class PersonajeASCII
                     PersonajeSecundarioASCII.Personaje.Habilidades.Salud -= DanioProvocado;
 
                     // Datos
-                    Console.SetCursorPosition(0, 45);
-                    Console.Write($"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} hace {DanioProvocado} de Daño");
+                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} hace {DanioProvocado} de Daño"], ConsolaASCII, 55, 0);
 
-                    Console.SetCursorPosition(0, 46);
-                    Console.Write($"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} salud restante {PersonajeSecundarioASCII.Personaje.Habilidades.Salud}");
+                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} salud restante {PersonajeSecundarioASCII.Personaje.Habilidades.Salud}"], ConsolaASCII, 56, 0);
+
                     Console.WriteLine();
-                    Consola.Continuar();
+                    Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 58, 1);
+                    Animacion.EvitarTeclas();
+                    Console.ReadKey();
                 }
                 else
                 {
                     // Inicio
                     Console.Clear();
-                    Console.SetCursorPosition(0, 0);
-                    Console.Write($"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Ataca");
+                    Animacion.Centrar(ASCII.Combate, ConsolaASCII, 0, 0);
 
-                    Console.SetCursorPosition(0, 1);
-                    Console.Write($"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Defiende");
+                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Ataca"], ConsolaASCII, 10, 0);
 
-                    Console.SetCursorPosition(0, 2);
                     if (PersonajeSecundarioASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {
-                        Animacion.Dibujar(ASCII.PersonajeFemenino, 0);
+                        Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, 11, 0);
                     }
                     else
                     {
-                        Animacion.Dibujar(ASCII.PersonajeMasculino, 0);
+                        Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, 11, 0);
                     }
 
-                    Console.SetCursorPosition(0, 22);
+                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Defiende"], ConsolaASCII, 33, 0);
+
                     if (PersonajePrincipalASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {
-                        Animacion.Dibujar(ASCII.PersonajeFemenino, 0);
+                        Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, 34, 0);
                     }
                     else
                     {
-                        Animacion.Dibujar(ASCII.PersonajeMasculino, 0);
+                        Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, 34, 0);
                     }
 
-                    // Daño y actualización de salud 
+                    // Daño y Actualización de Salud 
                     DanioProvocado = Danio(PersonajePrincipalASCII.Personaje, PersonajeSecundarioASCII.Personaje, Turno);
                     PersonajePrincipalASCII.Personaje.Habilidades.Salud -= DanioProvocado;
 
                     // Datos
-                    Console.SetCursorPosition(0, 45);
-                    Console.Write($"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} hace {DanioProvocado} de Daño");
+                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} hace {DanioProvocado} de Daño"], ConsolaASCII, 55, 0);
 
-                    Console.SetCursorPosition(0, 46);
-                    Console.Write($"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} tiene salud restante {PersonajePrincipalASCII.Personaje.Habilidades.Salud}");
+                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} salud restante {PersonajePrincipalASCII.Personaje.Habilidades.Salud}"], ConsolaASCII, 56, 0);
+
                     Console.WriteLine();
-                    Consola.Continuar();
+                    Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 58, 1);
+                    Animacion.EvitarTeclas();
+                    Console.ReadKey();
                 }
 
                 Turno = !Turno; // Cambia el turno
@@ -122,12 +120,26 @@ public partial class PersonajeASCII
             // Si perdió el Personaje Principal
             if (PersonajePrincipalASCII.Personaje.Habilidades.Salud <= 0)
             {
-                Animacion.Dibujar(ASCII.Derrota, 0);
+                Animacion.Centrar(ASCII.HarryPotter, ConsolaASCII, 0, 0);
+
+                Animacion.Centrar(["Hay que tener un gran valor para enfretarse a nuestros enemigos."], ConsolaASCII, 30, 60);
+                Thread.Sleep(1500);
+                Animacion.Centrar(["Recuerda... La fuerza de tus convicciones determina tu éxito."], ConsolaASCII, 31, 60);
+                Thread.Sleep(1500);
+                Animacion.Centrar(["Espero verte pronto..."], ConsolaASCII, 32, 60);
+
+                Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 34, 1);
+                Animacion.EvitarTeclas();
+                Console.ReadKey();
+
+                Console.Clear();
+                Animacion.Centrar(ASCII.Derrota, ConsolaASCII, 0, 0);
+
                 Environment.Exit(0); // Termina el juego y el programa
             }
 
             // Mensaje de Victoria
-            Console.WriteLine("Haz derrotado a tu rival!");
+            Animacion.Centrar(ASCII.GanarCombate, ConsolaASCII, 0, 0);
 
             // Salud reestablecida al 100
             PersonajePrincipalASCII.Personaje.Habilidades.Salud = 100;
@@ -139,29 +151,30 @@ public partial class PersonajeASCII
             if (ListPersonajesSecundariosASCII.Count > 0)
             {
                 // Mejora de habilidades al Personaje Principal
-                int SeleccionMejora;
+                string SeleccionMejora;
 
-                Console.WriteLine("Elige tu mejora");
-                Console.WriteLine("1. +1 en Ataque");
-                Console.WriteLine("2. +1 en Bloqueo");
+                Animacion.Centrar(["Elige tu mejora"], ConsolaASCII, 15, 0);
+                Animacion.Centrar(["1. +1 en Ataque"], ConsolaASCII, 17, 0);
+                Animacion.Centrar(["2. +1 en Bloqueo"], ConsolaASCII, 18, 0);
 
                 do
                 {
-                    Console.WriteLine("Selección: ");
-                    int.TryParse(Console.ReadLine(), out SeleccionMejora);
-                } while (SeleccionMejora != 1 && SeleccionMejora != 2);
+                    Animacion.Centrar(["                                   "], ConsolaASCII, 20, 0);
+                    Animacion.Centrar(["Selección: "], ConsolaASCII, 20, 0);
+                    SeleccionMejora = Console.ReadLine();
+                } while (SeleccionMejora != "1" && SeleccionMejora != "2");
 
-                if (SeleccionMejora == 1)
+                if (SeleccionMejora == "1")
                 {
                     // Evito que el Ataque aumente si ya está al máximo
                     if (PersonajePrincipalASCII.Personaje.Habilidades.Ataque < 5)
                     {
                         PersonajePrincipalASCII.Personaje.Habilidades.Ataque += 1;
-                        Console.WriteLine("Se otorgó +1 en Ataque");
+                        Animacion.Centrar(["Se otorgó +1 en Ataque"], ConsolaASCII, 25, 0);
                     }
                     else
                     {
-                        Console.WriteLine("El Ataque está al máximo!");
+                        Animacion.Centrar(["El Ataque está al máximo!"], ConsolaASCII, 25, 0);
                     }
 
                 }
@@ -171,16 +184,18 @@ public partial class PersonajeASCII
                     if (PersonajePrincipalASCII.Personaje.Habilidades.Bloqueo < 5)
                     {
                         PersonajePrincipalASCII.Personaje.Habilidades.Bloqueo += 1;
-                        Console.WriteLine("Se otorgó +1 en Bloqueo");
+                        Animacion.Centrar(["Se otorgó +1 en Bloqueo"], ConsolaASCII, 25, 0);
                     }
                     else
                     {
-                        Console.WriteLine("El Bloqueo está al máximo!");
+                        Animacion.Centrar(["El Bloqueo está al máximo!"], ConsolaASCII, 25, 0);
                     }
                 }
             }
 
-            Consola.Continuar();
+            Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 27, 1);
+            Animacion.EvitarTeclas();
+            Console.ReadKey();
             Console.Clear();
 
             ConsolaASCII.DibujarMarco();

@@ -7,7 +7,7 @@ public class Consola(int Ancho, int Altura, Point LimiteSuperior, Point LimiteIn
 {
     private int ancho = Ancho;
     private int altura = Altura;
-    private Point limiteSuperior = LimiteSuperior; 
+    private Point limiteSuperior = LimiteSuperior;
     private Point limiteInferior = LimiteInferior;
 
     public int Ancho { get => ancho; set => ancho = value; }
@@ -53,14 +53,15 @@ public class Consola(int Ancho, int Altura, Point LimiteSuperior, Point LimiteIn
     public void ConfiguracionIncial()
     {
         Console.SetWindowSize(Ancho, Altura); // Establece el Ancho y Alto de la Ventana
-        Console.Title = "Harry Potter y El Torneo Anual";
+        Console.Title = "Harry Potter y el Club de Duelos";
         Console.CursorVisible = false; // Esconde el Cursor
         Console.ForegroundColor = ConsoleColor.DarkCyan; // Cambia el Color del Texto
-        Console.Clear();
+        Console.Clear();   
     }
 
     public static void Continuar()
     {
+        Console.WriteLine();
         Console.WriteLine("Presiona una tecla para continuar...");
         Console.ReadKey();
     }

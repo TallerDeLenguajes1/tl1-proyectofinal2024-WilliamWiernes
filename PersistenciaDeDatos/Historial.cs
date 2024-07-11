@@ -28,7 +28,6 @@ public class HistorialJson
             {
                 StrWriter.WriteLine("{0}", ListPersonajesGanadoresJson);
                 StrWriter.Close();
-                Console.WriteLine("Personaje Ganador añadido a Json.");
             }
         }
     }
@@ -47,7 +46,6 @@ public class HistorialJson
             {
                 string PersonajesGanadoresJson = StrReader.ReadToEnd();
                 Archivo.Close();
-                Console.WriteLine("Lista de Personajes Ganadores leída.");
                 
                 List<PersonajeGanador> ListPersonajesGanadores = JsonSerializer.Deserialize<List<PersonajeGanador>>(PersonajesGanadoresJson);
 
