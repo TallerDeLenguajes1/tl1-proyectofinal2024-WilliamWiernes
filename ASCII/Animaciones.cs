@@ -110,7 +110,7 @@ public class Animacion
     {
         foreach (string Linea in Texto)
         {
-            Console.SetCursorPosition((Console.WindowWidth - Linea.Length) / 2, Y);
+            Console.SetCursorPosition((ConsolaASCII.LimiteInferior.X - Linea.Length) / 2, Y);
 
             foreach (char Letra in Linea)
             {

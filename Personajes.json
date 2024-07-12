@@ -1,0 +1,68 @@
+[
+    {
+        "Descripcion": {
+            "Nombre": "w",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 3,
+            "Bloqueo": 1,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Vincent Crabbe",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 1,
+            "Bloqueo": 1,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Derek",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 5,
+            "Bloqueo": 5,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Terry Boot",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 3,
+            "Bloqueo": 2,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Dennis Creevey",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 1,
+            "Bloqueo": 4,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Neville Longbottom",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 1,
+            "Bloqueo": 4,
+            "Salud": 100
+        }
+    }
+]
