@@ -9,7 +9,7 @@
 ### :computer: Requisitos del Sistema
 - Tener instalado _.NET 8.0_ o instalarlo desde su [página oficial](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 - Sistema operativo _Windows 10_ (preferentemente), _MacOS_ o _Linux_.
-- 100MB de espacio en disco.
+- 200MB de espacio en disco.
 - 4gb de ram.
 
 ### :inbox_tray: Instalación
