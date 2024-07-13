@@ -17,8 +17,7 @@
 - O también se puede clonar el repositorio
 ``` bash
     git clone https://github.com/TallerDeLenguajes1/tl1-proyectofinal2024-WilliamWiernes.git
-```
-git 
+``` 
 ## :book: Uso
 ### :rocket: Guía de Inicio Rápido
 1. _Windows_ + _R_, escribir *cmd* y dar _Enter_
