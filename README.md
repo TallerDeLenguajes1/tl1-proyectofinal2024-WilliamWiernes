@@ -43,9 +43,9 @@ Es importante tener en cuenta que para que el sistema de colisiones funcione cor
 - [Texto ASCII con marco y fuentes seleccionables](https://www.asciiart.eu/text-to-ascii-art)
 - [Descargar audio de Youtube](https://flvto.pro/es16/)
 - [Convertir MP3 a Wav](https://convertio.co/es/audio-converter/)
+- [Documentación Oficial](https://learn.microsoft.com/en-us/dotnet/csharp/)
 ### :earth_americas: API Externas
 - [Harry Potter API](https://hp-api.onrender.com/api/characters/students)
-- [Documentación Oficial](https://learn.microsoft.com/en-us/dotnet/csharp/)
 
 ## :wrench: Solución de Problemas
 Un problema común se relaciona con el tamaño de la consola, por defecto vienen valores en donde se puede jugar como fue pensado el juego, pero monitores menores a 24 pulgadas pueden presentar problemas con la altura de la consola. La solución es sencilla: ingresar al _Program.cs_ y cambiar el valor de la variable entera _Altura_ por un valor que haga que la consola se puede apreciar correctamente en la pantalla.
