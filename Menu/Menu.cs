@@ -61,11 +61,8 @@ public class Menu
 
             foreach (PersonajeASCII PersonajeSecundarioASCII in ListPersonajesSecundariosASCII)
             {
-                if (PersonajeSecundarioASCII != null)
-                {
-                    PersonajeSecundarioASCII.MostrarNombre(PersonajeSecundarioASCII.Posicion);
-                    PersonajeSecundarioASCII.Dibujar();
-                }
+                PersonajeSecundarioASCII.MostrarNombre(PersonajeSecundarioASCII.Posicion);
+                PersonajeSecundarioASCII.Dibujar();
             }
 
             // Verificar si todos los personajes secundarios han sido derrotados

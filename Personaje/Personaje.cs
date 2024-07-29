@@ -10,7 +10,7 @@ namespace EspacioPersonaje;
 public class Datos
 {
     private string nombre;
-    private string sexo; // female o male por tema de la API
+    private string sexo;
 
     public string Nombre { get => nombre; set => nombre = value; }
     public string Sexo { get => sexo; set => sexo = value; }
@@ -90,6 +90,7 @@ public class FabricaDePersonajes
 
         // Nombre y Género que vienen desde la API
         string SexoAle = (PersonajeAleAPI.Gender == "female") ? "Femenino" : "Masculino";
+
         Datos Descripcion = new Datos
         {
             Nombre = PersonajeAleAPI.Name,
@@ -124,7 +125,7 @@ public class FabricaDePersonajes
         else // No existe, o existe pero no tiene datos
         {
             // Creación del Personaje Principal
-            Personaje PersonajePrincipal = CrearPersonajePrincipal(ConsolaASCII);            
+            Personaje PersonajePrincipal = CrearPersonajePrincipal(ConsolaASCII);
 
             ListPersonajes.Add(PersonajePrincipal); // El Personaje Principal es siempre el primero
 

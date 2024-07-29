@@ -4,11 +4,17 @@ using EspacioMenu;
 using System.Drawing;
 using System.Media;
 using EspacioPersonaje;
+using EspacioPersistencia;
 
 // Genero la lista de Personajes API al comienzo del Programa
-List<PersonajeAPI> ListPersonajesAPI = await PersonajeAPI.GetPersonajesAsync(); 
-if (ListPersonajesAPI == null) // Si hay algún error con la API corto la ejecución del Programa
-    Environment.Exit(0);
+List<PersonajeAPI> ListPersonajesAPI = await PersonajeAPI.GetPersonajesAsync();
+string NombreArchivoJugar = "Personajes.json";
+if (ListPersonajesAPI == null) // Si hay algún error con la API y NO existe Json de Personajes corto la ejecución del Programa
+    if (!PersonajesJson.Existe(NombreArchivoJugar))
+    {
+        Console.WriteLine("Error en la API y Json de Personajes.");
+        Environment.Exit(0);
+    }
 
 // Configuración de Consola antes de comenzar
 int Ancho = 135; // 135 por defecto, no menos de 135 - no más de 150 (depende del monitor)
@@ -31,7 +37,6 @@ Console.ReadKey();
 
 // Menú de Opciones
 string Seleccion;
-string NombreArchivoJugar = "Personajes.json";
 string NombreArchivoGanadores = "HistorialGanadores.json";
 
 while (true)

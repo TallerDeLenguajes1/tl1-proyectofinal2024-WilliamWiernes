@@ -1,66 +1,66 @@
 [
     {
         "Descripcion": {
-            "Nombre": "w",
+            "Nombre": "William",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 1,
+            "Bloqueo": 1,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Melinda Bobbin",
             "Sexo": "Femenino"
         },
         "Habilidades": {
-            "Ataque": 3,
-            "Bloqueo": 1,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Vincent Crabbe",
-            "Sexo": "Masculino"
-        },
-        "Habilidades": {
-            "Ataque": 1,
-            "Bloqueo": 1,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Derek",
-            "Sexo": "Masculino"
-        },
-        "Habilidades": {
             "Ataque": 5,
-            "Bloqueo": 5,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Terry Boot",
-            "Sexo": "Masculino"
-        },
-        "Habilidades": {
-            "Ataque": 3,
-            "Bloqueo": 2,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Dennis Creevey",
-            "Sexo": "Masculino"
-        },
-        "Habilidades": {
-            "Ataque": 1,
             "Bloqueo": 4,
             "Salud": 100
         }
     },
     {
         "Descripcion": {
-            "Nombre": "Neville Longbottom",
+            "Nombre": "Cadwallader",
             "Sexo": "Masculino"
         },
         "Habilidades": {
             "Ataque": 1,
+            "Bloqueo": 3,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Fred Weasley",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 5,
+            "Bloqueo": 3,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Victoire Weasley",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 1,
+            "Bloqueo": 2,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Pansy Parkinson",
+            "Sexo": "Femenino"
+        },
+        "Habilidades": {
+            "Ataque": 4,
             "Bloqueo": 4,
             "Salud": 100
         }
