@@ -1,67 +1,67 @@
 [
     {
         "Descripcion": {
-            "Nombre": "William",
-            "Sexo": "Masculino"
+            "Nombre": "a",
+            "Sexo": "Femenino"
         },
         "Habilidades": {
-            "Ataque": 1,
+            "Ataque": 2,
             "Bloqueo": 1,
             "Salud": 100
         }
     },
     {
         "Descripcion": {
-            "Nombre": "Melinda Bobbin",
+            "Nombre": "Geoffrey Hooper",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 3,
+            "Bloqueo": 1,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Romilda Vane",
             "Sexo": "Femenino"
         },
         "Habilidades": {
             "Ataque": 5,
-            "Bloqueo": 4,
+            "Bloqueo": 5,
             "Salud": 100
         }
     },
     {
         "Descripcion": {
-            "Nombre": "Cadwallader",
+            "Nombre": "Scorpius Malfoy",
             "Sexo": "Masculino"
         },
         "Habilidades": {
-            "Ataque": 1,
-            "Bloqueo": 3,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Fred Weasley",
-            "Sexo": "Masculino"
-        },
-        "Habilidades": {
-            "Ataque": 5,
-            "Bloqueo": 3,
-            "Salud": 100
-        }
-    },
-    {
-        "Descripcion": {
-            "Nombre": "Victoire Weasley",
-            "Sexo": "Femenino"
-        },
-        "Habilidades": {
-            "Ataque": 1,
+            "Ataque": 3,
             "Bloqueo": 2,
             "Salud": 100
         }
     },
     {
         "Descripcion": {
-            "Nombre": "Pansy Parkinson",
-            "Sexo": "Femenino"
+            "Nombre": "Barnabas the Barmy",
+            "Sexo": "Masculino"
         },
         "Habilidades": {
-            "Ataque": 4,
-            "Bloqueo": 4,
+            "Ataque": 2,
+            "Bloqueo": 5,
+            "Salud": 100
+        }
+    },
+    {
+        "Descripcion": {
+            "Nombre": "Harper",
+            "Sexo": "Masculino"
+        },
+        "Habilidades": {
+            "Ataque": 5,
+            "Bloqueo": 2,
             "Salud": 100
         }
     }
