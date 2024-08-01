@@ -5,13 +5,14 @@ using EspacioConsola;
 using EspacioPersistencia;
 using EspacioPersonaje;
 using EspacioPersonajeASCII;
+using EspacioHechizo;
 
 namespace EspacioGameplay;
 
 public partial class PersonajeASCII
 {
     // Función para el sistema de combate cuando el Personaje Principal colisiona con uno Secundario
-    public static void Combate(PersonajeASCII PersonajeSecundarioASCII, PersonajeASCII PersonajePrincipalASCII, Consola ConsolaASCII, List<PersonajeASCII> ListPersonajesSecundariosASCII)
+    public static void Combate(PersonajeASCII PersonajeSecundarioASCII, PersonajeASCII PersonajePrincipalASCII, Consola ConsolaASCII, List<PersonajeASCII> ListPersonajesSecundariosASCII, List<HechizoAPI> ListHechizosAPI)
     {
         if (PersonajeSecundarioASCII != null)
         {
@@ -26,13 +27,27 @@ public partial class PersonajeASCII
             while (PersonajePrincipalASCII.Personaje.Habilidades.Salud > 0 && PersonajeSecundarioASCII.Personaje.Habilidades.Salud > 0)
             {
                 int DanioProvocado;
+
+                // Hechizo aleatorio
+                HechizoAPI HechizoAleAPI = new HechizoAPI();
+                if (ListHechizosAPI != null)
+                {
+                    Random Aleatorio = new Random();
+                    int IndexAle = Aleatorio.Next(0, ListHechizosAPI.Count + 1);
+                    HechizoAleAPI = ListHechizosAPI[IndexAle];
+                }
+                else
+                {
+                    HechizoAleAPI.name = "un Ataque";
+                }
+
                 if (Turno)
                 {
                     // Inicio
                     Console.Clear();
                     Animacion.Centrar(ASCII.Combate, ConsolaASCII, 0, 0);
 
-                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Ataca"], ConsolaASCII, 10, 0);
+                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Lanza {HechizoAleAPI.name}"], ConsolaASCII, 10, 0);
 
                     if (PersonajePrincipalASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {
@@ -74,7 +89,7 @@ public partial class PersonajeASCII
                     Console.Clear();
                     Animacion.Centrar(ASCII.Combate, ConsolaASCII, 0, 0);
 
-                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Ataca"], ConsolaASCII, 10, 0);
+                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Lanza {HechizoAleAPI.name}"], ConsolaASCII, 10, 0);
 
                     if (PersonajeSecundarioASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {

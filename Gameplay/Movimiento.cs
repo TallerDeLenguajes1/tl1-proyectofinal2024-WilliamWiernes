@@ -4,6 +4,7 @@ using EspacioConsola;
 using EspacioPersistencia;
 using EspacioPersonaje;
 using EspacioPersonajeASCII;
+using EspacioHechizo;
 
 namespace EspacioGameplay;
 public partial class PersonajeASCII
@@ -111,7 +112,7 @@ public partial class PersonajeASCII
 
     // Función para el Movimiento del Personaje Principal, teniendo en cuenta la tecla pulsada y las colisiones con el marco y los Personajes Secundarios,
     // donde si colisiona con uno se activa el sistema de combate
-    public void Mover(int Velocidad, List<PersonajeASCII> ListPersonajesSecundariosASCII, PersonajeASCII PersonajePrincipalASCII, Consola ConsolaASCII)
+    public void Mover(int Velocidad, List<PersonajeASCII> ListPersonajesSecundariosASCII, PersonajeASCII PersonajePrincipalASCII, Consola ConsolaASCII, List<HechizoAPI> ListHechizosAPI)
     {
         if (Console.KeyAvailable)
         {
@@ -123,7 +124,7 @@ public partial class PersonajeASCII
 
             Colisiones(PosicionActual);
 
-            Combate(ColisionesPersonajes(Posicion, ListPersonajesSecundariosASCII), PersonajePrincipalASCII, ConsolaASCII, ListPersonajesSecundariosASCII);
+            Combate(ColisionesPersonajes(Posicion, ListPersonajesSecundariosASCII), PersonajePrincipalASCII, ConsolaASCII, ListPersonajesSecundariosASCII, ListHechizosAPI);
         }
 
         Dibujar();

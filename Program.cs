@@ -5,6 +5,8 @@ using System.Drawing;
 using System.Media;
 using EspacioPersonaje;
 using EspacioPersistencia;
+using EspacioHechizo;
+using System.ComponentModel.DataAnnotations;
 
 // Genero la lista de Personajes API al comienzo del Programa
 List<PersonajeAPI> ListPersonajesAPI = await PersonajeAPI.GetPersonajesAsync();
@@ -15,6 +17,9 @@ if (ListPersonajesAPI == null) // Si hay algún error con la API y NO existe Jso
         Console.WriteLine("Error en la API y Json de Personajes.");
         Environment.Exit(0);
     }
+
+// Genero la lista de Hechizos API
+List<HechizoAPI> ListHechizosAPI = await HechizoAPI.GetHechizoAsync();
 
 // Configuración de Consola antes de comenzar
 int Ancho = 135; // 135 por defecto, no menos de 135 - no más de 150 (depende del monitor)
@@ -47,7 +52,7 @@ while (true)
         case "1":
         case "i":
         case "I":
-            Menu.Opcion1(NombreArchivoJugar, ConsolaASCII, ListPersonajesAPI);
+            Menu.Opcion1(NombreArchivoJugar, ConsolaASCII, ListPersonajesAPI, ListHechizosAPI);
             break;
         case "2":
         case "ii":

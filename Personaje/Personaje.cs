@@ -134,7 +134,7 @@ public class FabricaDePersonajes
                 Personaje PersonajeParaLista = PersonajeAleatorio(ListPersonajesAPI); // El resto de personajes son aleatorios
                 ListPersonajes.Add(PersonajeParaLista); // Añado el Personaje a la Lista
 
-                // Elimino el Personajes de la ListaAPI para evitar la duplicación de nombres
+                // Elimino el Personaje de la ListaAPI para evitar la duplicación de nombres
                 int Index = ListPersonajesAPI.FindIndex(p => p.Name == PersonajeParaLista.Descripcion.Nombre);
                 if (Index != -1)
                     ListPersonajesAPI.RemoveAt(Index);

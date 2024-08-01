@@ -3,6 +3,7 @@ using EspacioPersonaje;
 using EspacioPersonajeASCII;
 using EspacioGameplay;
 using EspacioPersistencia;
+using EspacioHechizo;
 using System.Drawing;
 using System.Media;
 
@@ -25,7 +26,7 @@ public class Menu
         return Seleccion;
     }
 
-    public static void Opcion1(string NombreArchivo, Consola ConsolaASCII, List<PersonajeAPI> ListPersonajesAPI)
+    public static void Opcion1(string NombreArchivo, Consola ConsolaASCII, List<PersonajeAPI> ListPersonajesAPI, List<HechizoAPI> ListHechizosAPI)
     {
         // Implementación del juego, Lista de Personajes
         List<Personaje> ListPersonajes = FabricaDePersonajes.ListPersonajes(NombreArchivo, ConsolaASCII, ListPersonajesAPI); // Lista Principal de Personajes
@@ -57,7 +58,7 @@ public class Menu
 
         while (Jugar)
         {
-            PersonajePrincipalASCII.Mover(1, ListPersonajesSecundariosASCII, PersonajePrincipalASCII, ConsolaASCII);
+            PersonajePrincipalASCII.Mover(1, ListPersonajesSecundariosASCII, PersonajePrincipalASCII, ConsolaASCII, ListHechizosAPI);
 
             foreach (PersonajeASCII PersonajeSecundarioASCII in ListPersonajesSecundariosASCII)
             {
