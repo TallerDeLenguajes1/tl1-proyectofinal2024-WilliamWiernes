@@ -35,5 +35,23 @@ public class HechizoAPI
             return null;
         }
     }
+
+    // Función que devuelve un Hechizo aleatorio
+    public static HechizoAPI HechizoAleatorio(List<HechizoAPI> ListHechizosAPI)
+    {
+        HechizoAPI HechizoAleAPI = new HechizoAPI();
+        if (ListHechizosAPI != null)
+        {
+            Random Aleatorio = new Random();
+            int IndexAle = Aleatorio.Next(0, ListHechizosAPI.Count + 1);
+            HechizoAleAPI = ListHechizosAPI[IndexAle];
+        }
+        else
+        {
+            HechizoAleAPI.name = "un Ataque";
+        }
+
+        return HechizoAleAPI;
+    }
 }
 

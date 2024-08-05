@@ -5,8 +5,8 @@
             "Sexo": "Femenino"
         },
         "Habilidades": {
-            "Ataque": 2,
-            "Bloqueo": 1,
+            "Ataque": 100,
+            "Bloqueo": 100,
             "Salud": 100
         }
     },

@@ -56,13 +56,6 @@ public class Consola(int Ancho, int Altura, Point LimiteSuperior, Point LimiteIn
         Console.Title = "Harry Potter y el Club de Duelos";
         Console.CursorVisible = false; // Esconde el Cursor
         Console.ForegroundColor = ConsoleColor.DarkCyan; // Cambia el Color del Texto
-        Console.Clear();   
-    }
-
-    public static void Continuar()
-    {
-        Console.WriteLine();
-        Console.WriteLine("Presiona una tecla para continuar...");
-        Console.ReadKey();
+        Console.Clear();
     }
 }

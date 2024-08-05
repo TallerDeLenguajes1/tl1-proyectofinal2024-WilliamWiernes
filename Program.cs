@@ -32,11 +32,11 @@ SoundPlayer Cancion = new SoundPlayer(@"Musica\HedwigsTheme.wav");
 Cancion.PlayLooping();
 
 // Background
-Animacion.Centrar(ASCII.Fondo, ConsolaASCII, 0, 0);
+Animacion.CentrarYEsquipear(ASCII.Fondo, ConsolaASCII, 0, 0);
 
 // Introducción
-Animacion.Centrar(ASCII.TituloInicio, ConsolaASCII, 15, 0);
-Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 30, 3);
+Animacion.CentrarYEsquipear(ASCII.TituloInicio, ConsolaASCII, 15, 0);
+Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, 30, 3);
 Animacion.EvitarTeclas();
 Console.ReadKey();
 

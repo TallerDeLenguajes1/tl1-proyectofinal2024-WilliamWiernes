@@ -16,10 +16,10 @@ public class Menu
         string Seleccion;
 
         Console.Clear();
-        Animacion.Centrar(ASCII.Menu, ConsolaASCII, 0, 0);
+        Animacion.CentrarYEsquipear(ASCII.Menu, ConsolaASCII, 0, 0);
         do
         {
-            Animacion.Centrar(["Selección: "], ConsolaASCII, 25, 0);
+            Animacion.CentrarYEsquipear(["Selección: "], ConsolaASCII, 25, 0);
             Seleccion = Console.ReadLine();
         } while (Seleccion != "1" && Seleccion != "2" && Seleccion != "3" && Seleccion != "i" && Seleccion != "ii" && Seleccion != "iii" && Seleccion != "I" && Seleccion != "II" && Seleccion != "III");
 
@@ -76,23 +76,23 @@ public class Menu
                 HistorialJson.GuardarGanador(PersonajePrincipalGanador, NombreArchivoHistorial);
 
                 Console.Clear();
-                Animacion.Centrar(ASCII.HarryPotter, ConsolaASCII, 0, 0);
+                Animacion.CentrarYEsquipear(ASCII.HarryPotter, ConsolaASCII, 0, 0);
 
-                Animacion.Centrar(["Bien hecho."], ConsolaASCII, 30, 60);
+                Animacion.CentrarYEsquipear(["Bien hecho."], ConsolaASCII, 30, 60);
                 Thread.Sleep(1500);
-                Animacion.Centrar(["Recuerda... Trabajar duro es importante, pero hay algo que importa más: creer en ti mismo."], ConsolaASCII, 31, 60);
+                Animacion.CentrarYEsquipear(["Recuerda... Trabajar duro es importante, pero hay algo que importa más: creer en ti mismo."], ConsolaASCII, 31, 60);
                 Thread.Sleep(1500);
-                Animacion.Centrar(["Espero verte pronto..."], ConsolaASCII, 32, 60);
+                Animacion.CentrarYEsquipear(["Espero verte pronto..."], ConsolaASCII, 32, 60);
 
-                Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 34, 1);
+                Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, 34, 1);
                 Animacion.EvitarTeclas();
                 Console.ReadKey();
 
                 Console.Clear();
-                Animacion.Centrar(ASCII.Victoria, ConsolaASCII, 0, 0); // Animación de Victoria
+                Animacion.CentrarYEsquipear(ASCII.Victoria, ConsolaASCII, 0, 0); // Animación de Victoria
                 Jugar = false; // Termina el juego
 
-                Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 10, 1);
+                Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, 10, 1);
                 Animacion.EvitarTeclas();
                 Console.ReadKey();
             }
@@ -102,7 +102,7 @@ public class Menu
     public static void Opcion2(string NombreArchivo, Consola ConsolaASCII)
     {
         Console.Clear();
-        Animacion.Centrar(ASCII.Ganadores, ConsolaASCII, 0, 0);
+        Animacion.CentrarYEsquipear(ASCII.Ganadores, ConsolaASCII, 0, 0);
 
         List<PersonajeGanador> ListPersonajesGanadores = HistorialJson.LeerGanadores(NombreArchivo);
 
@@ -115,24 +115,24 @@ public class Menu
                 // Dibujo ASCII por encima de los Datos del Personaje
                 if (PersonajeGanador.Personaje.Descripcion.Sexo == "Femenino")
                 {
-                    Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, Y, 0);
+                    Animacion.CentrarYEsquipear(ASCII.PersonajeFemenino, ConsolaASCII, Y, 0);
                 }
                 else
                 {
-                    Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, Y, 0);
+                    Animacion.CentrarYEsquipear(ASCII.PersonajeMasculino, ConsolaASCII, Y, 0);
                 }
-                Animacion.Centrar([$"Nombre: {PersonajeGanador.Personaje.Descripcion.Nombre}", $"Sexo: {PersonajeGanador.Personaje.Descripcion.Sexo}", $"Día: {PersonajeGanador.Dia}"], ConsolaASCII, Y + 21, 0);
+                Animacion.CentrarYEsquipear([$"Nombre: {PersonajeGanador.Personaje.Descripcion.Nombre}", $"Sexo: {PersonajeGanador.Personaje.Descripcion.Sexo}", $"Día: {PersonajeGanador.Dia}"], ConsolaASCII, Y + 21, 0);
                 Y += 25;
             }
 
-            Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, Y + 2, 1);
+            Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, Y + 2, 1);
             Animacion.EvitarTeclas();
             Console.ReadKey();
         }
         else
         {
-            Animacion.Centrar(["Todavía no hay Ganadores. ¿Serás el Próximo?"], ConsolaASCII, 15, 0);
-            Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 17, 1);
+            Animacion.CentrarYEsquipear(["Todavía no hay Ganadores. ¿Serás el Próximo?"], ConsolaASCII, 15, 0);
+            Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, 17, 1);
             Animacion.EvitarTeclas();
             Console.ReadKey();
         }
@@ -141,12 +141,12 @@ public class Menu
     public static void Opcion3(Consola ConsolaASCII)
     {
         Console.Clear();
-        Animacion.Centrar(ASCII.HarryPotter, ConsolaASCII, 0, 0);
+        Animacion.CentrarYEsquipear(ASCII.HarryPotter, ConsolaASCII, 0, 0);
 
         Thread.Sleep(1500);
-        Animacion.Centrar(["Mi filosofía es que el que teme sufre dos veces, por eso no hay nada que temer."], ConsolaASCII, 30, 60);
+        Animacion.CentrarYEsquipear(["Mi filosofía es que el que teme sufre dos veces, por eso no hay nada que temer."], ConsolaASCII, 30, 60);
         Thread.Sleep(1500);
-        Animacion.Centrar(["Espero verte pronto..."], ConsolaASCII, 31, 60);
+        Animacion.CentrarYEsquipear(["Espero verte pronto..."], ConsolaASCII, 31, 60);
 
         Environment.Exit(0);
     }

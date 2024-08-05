@@ -18,7 +18,7 @@ public partial class PersonajeASCII
         {
             // Animación inicio de cada Combate
             Console.Clear();
-            Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} VS {PersonajeSecundarioASCII.Personaje.Descripcion.Nombre}"], ConsolaASCII, ConsolaASCII.Altura / 2, 150);
+            Animacion.CentrarYEsquipear([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} VS {PersonajeSecundarioASCII.Personaje.Descripcion.Nombre}"], ConsolaASCII, ConsolaASCII.Altura / 2, 150);
             Thread.Sleep(1000);
             Console.Clear();
 
@@ -29,44 +29,34 @@ public partial class PersonajeASCII
                 int DanioProvocado;
 
                 // Hechizo aleatorio
-                HechizoAPI HechizoAleAPI = new HechizoAPI();
-                if (ListHechizosAPI != null)
-                {
-                    Random Aleatorio = new Random();
-                    int IndexAle = Aleatorio.Next(0, ListHechizosAPI.Count + 1);
-                    HechizoAleAPI = ListHechizosAPI[IndexAle];
-                }
-                else
-                {
-                    HechizoAleAPI.name = "un Ataque";
-                }
+                HechizoAPI HechizoAleAPI = HechizoAPI.HechizoAleatorio(ListHechizosAPI);
 
                 if (Turno)
                 {
                     // Inicio
                     Console.Clear();
-                    Animacion.Centrar(ASCII.Combate, ConsolaASCII, 0, 0);
+                    Animacion.CentrarYEsquipear(ASCII.Combate, ConsolaASCII, 0, 0);
 
-                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Lanza {HechizoAleAPI.name}"], ConsolaASCII, 10, 0);
+                    Animacion.CentrarYEsquipear([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Lanza {HechizoAleAPI.name}"], ConsolaASCII, 10, 0);
 
                     if (PersonajePrincipalASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {
-                        Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, 11, 0);
+                        Animacion.CentrarYEsquipear(ASCII.PersonajeFemenino, ConsolaASCII, 11, 0);
                     }
                     else
                     {
-                        Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, 11, 0);
+                        Animacion.CentrarYEsquipear(ASCII.PersonajeMasculino, ConsolaASCII, 11, 0);
                     }
 
-                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Defiende"], ConsolaASCII, 33, 0);
+                    Animacion.CentrarYEsquipear([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Defiende"], ConsolaASCII, 33, 0);
 
                     if (PersonajeSecundarioASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {
-                        Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, 34, 0);
+                        Animacion.CentrarYEsquipear(ASCII.PersonajeFemenino, ConsolaASCII, 34, 0);
                     }
                     else
                     {
-                        Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, 34, 0);
+                        Animacion.CentrarYEsquipear(ASCII.PersonajeMasculino, ConsolaASCII, 34, 0);
                     }
 
                     // Daño y Actualización de Salud 
@@ -74,12 +64,12 @@ public partial class PersonajeASCII
                     PersonajeSecundarioASCII.Personaje.Habilidades.Salud -= DanioProvocado;
 
                     // Datos
-                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} hace {DanioProvocado} de Daño"], ConsolaASCII, 55, 0);
+                    Animacion.CentrarYEsquipear([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} hace {DanioProvocado} de Daño"], ConsolaASCII, 55, 0);
 
-                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} salud restante {PersonajeSecundarioASCII.Personaje.Habilidades.Salud}"], ConsolaASCII, 56, 0);
+                    Animacion.CentrarYEsquipear([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} salud restante {PersonajeSecundarioASCII.Personaje.Habilidades.Salud}"], ConsolaASCII, 56, 0);
 
                     Console.WriteLine();
-                    Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 58, 1);
+                    Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, 58, 1);
                     Animacion.EvitarTeclas();
                     Console.ReadKey();
                 }
@@ -87,28 +77,28 @@ public partial class PersonajeASCII
                 {
                     // Inicio
                     Console.Clear();
-                    Animacion.Centrar(ASCII.Combate, ConsolaASCII, 0, 0);
+                    Animacion.CentrarYEsquipear(ASCII.Combate, ConsolaASCII, 0, 0);
 
-                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Lanza {HechizoAleAPI.name}"], ConsolaASCII, 10, 0);
+                    Animacion.CentrarYEsquipear([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} Lanza {HechizoAleAPI.name}"], ConsolaASCII, 10, 0);
 
                     if (PersonajeSecundarioASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {
-                        Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, 11, 0);
+                        Animacion.CentrarYEsquipear(ASCII.PersonajeFemenino, ConsolaASCII, 11, 0);
                     }
                     else
                     {
-                        Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, 11, 0);
+                        Animacion.CentrarYEsquipear(ASCII.PersonajeMasculino, ConsolaASCII, 11, 0);
                     }
 
-                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Defiende"], ConsolaASCII, 33, 0);
+                    Animacion.CentrarYEsquipear([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} Defiende"], ConsolaASCII, 33, 0);
 
                     if (PersonajePrincipalASCII.Personaje.Descripcion.Sexo == "Femenino")
                     {
-                        Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, 34, 0);
+                        Animacion.CentrarYEsquipear(ASCII.PersonajeFemenino, ConsolaASCII, 34, 0);
                     }
                     else
                     {
-                        Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, 34, 0);
+                        Animacion.CentrarYEsquipear(ASCII.PersonajeMasculino, ConsolaASCII, 34, 0);
                     }
 
                     // Daño y Actualización de Salud 
@@ -116,12 +106,12 @@ public partial class PersonajeASCII
                     PersonajePrincipalASCII.Personaje.Habilidades.Salud -= DanioProvocado;
 
                     // Datos
-                    Animacion.Centrar([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} hace {DanioProvocado} de Daño"], ConsolaASCII, 55, 0);
+                    Animacion.CentrarYEsquipear([$"{PersonajeSecundarioASCII.Personaje.Descripcion.Nombre} hace {DanioProvocado} de Daño"], ConsolaASCII, 55, 0);
 
-                    Animacion.Centrar([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} salud restante {PersonajePrincipalASCII.Personaje.Habilidades.Salud}"], ConsolaASCII, 56, 0);
+                    Animacion.CentrarYEsquipear([$"{PersonajePrincipalASCII.Personaje.Descripcion.Nombre} salud restante {PersonajePrincipalASCII.Personaje.Habilidades.Salud}"], ConsolaASCII, 56, 0);
 
                     Console.WriteLine();
-                    Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 58, 1);
+                    Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, 58, 1);
                     Animacion.EvitarTeclas();
                     Console.ReadKey();
                 }
@@ -135,26 +125,26 @@ public partial class PersonajeASCII
             // Si perdió el Personaje Principal
             if (PersonajePrincipalASCII.Personaje.Habilidades.Salud <= 0)
             {
-                Animacion.Centrar(ASCII.HarryPotter, ConsolaASCII, 0, 0);
+                Animacion.CentrarYEsquipear(ASCII.HarryPotter, ConsolaASCII, 0, 0);
 
-                Animacion.Centrar(["Hay que tener un gran valor para enfretarse a nuestros enemigos."], ConsolaASCII, 30, 60);
+                Animacion.CentrarYEsquipear(["Hay que tener un gran valor para enfretarse a nuestros enemigos."], ConsolaASCII, 30, 60);
                 Thread.Sleep(1500);
-                Animacion.Centrar(["Recuerda... La fuerza de tus convicciones determina tu éxito."], ConsolaASCII, 31, 60);
+                Animacion.CentrarYEsquipear(["Recuerda... La fuerza de tus convicciones determina tu éxito."], ConsolaASCII, 31, 60);
                 Thread.Sleep(1500);
-                Animacion.Centrar(["Espero verte pronto..."], ConsolaASCII, 32, 60);
+                Animacion.CentrarYEsquipear(["Espero verte pronto..."], ConsolaASCII, 32, 60);
 
-                Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 34, 1);
+                Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, 34, 1);
                 Animacion.EvitarTeclas();
                 Console.ReadKey();
 
                 Console.Clear();
-                Animacion.Centrar(ASCII.Derrota, ConsolaASCII, 0, 0);
+                Animacion.CentrarYEsquipear(ASCII.Derrota, ConsolaASCII, 0, 0);
 
                 Environment.Exit(0); // Termina el juego y el programa
             }
 
             // Mensaje de Victoria
-            Animacion.Centrar(ASCII.GanarCombate, ConsolaASCII, 0, 0);
+            Animacion.CentrarYEsquipear(ASCII.GanarCombate, ConsolaASCII, 0, 0);
 
             // Salud reestablecida al 100
             PersonajePrincipalASCII.Personaje.Habilidades.Salud = 100;
@@ -168,14 +158,14 @@ public partial class PersonajeASCII
                 // Mejora de habilidades al Personaje Principal
                 string SeleccionMejora;
 
-                Animacion.Centrar(["Elige tu mejora"], ConsolaASCII, 15, 0);
-                Animacion.Centrar(["1. +1 en Ataque"], ConsolaASCII, 17, 0);
-                Animacion.Centrar(["2. +1 en Bloqueo"], ConsolaASCII, 18, 0);
+                Animacion.CentrarYEsquipear(["Elige tu mejora"], ConsolaASCII, 15, 0);
+                Animacion.CentrarYEsquipear(["1. +1 en Ataque"], ConsolaASCII, 17, 0);
+                Animacion.CentrarYEsquipear(["2. +1 en Bloqueo"], ConsolaASCII, 18, 0);
 
                 do
                 {
-                    Animacion.Centrar(["                                   "], ConsolaASCII, 20, 0);
-                    Animacion.Centrar(["Selección: "], ConsolaASCII, 20, 0);
+                    Animacion.CentrarYEsquipear(["                                   "], ConsolaASCII, 20, 0);
+                    Animacion.CentrarYEsquipear(["Selección: "], ConsolaASCII, 20, 0);
                     SeleccionMejora = Console.ReadLine();
                 } while (SeleccionMejora != "1" && SeleccionMejora != "2");
 
@@ -185,13 +175,12 @@ public partial class PersonajeASCII
                     if (PersonajePrincipalASCII.Personaje.Habilidades.Ataque < 5)
                     {
                         PersonajePrincipalASCII.Personaje.Habilidades.Ataque += 1;
-                        Animacion.Centrar(["Se otorgó +1 en Ataque"], ConsolaASCII, 25, 0);
+                        Animacion.CentrarYEsquipear(["Se otorgó +1 en Ataque"], ConsolaASCII, 25, 0);
                     }
                     else
                     {
-                        Animacion.Centrar(["El Ataque está al máximo!"], ConsolaASCII, 25, 0);
+                        Animacion.CentrarYEsquipear(["El Ataque está al máximo!"], ConsolaASCII, 25, 0);
                     }
-
                 }
                 else
                 {
@@ -199,16 +188,16 @@ public partial class PersonajeASCII
                     if (PersonajePrincipalASCII.Personaje.Habilidades.Bloqueo < 5)
                     {
                         PersonajePrincipalASCII.Personaje.Habilidades.Bloqueo += 1;
-                        Animacion.Centrar(["Se otorgó +1 en Bloqueo"], ConsolaASCII, 25, 0);
+                        Animacion.CentrarYEsquipear(["Se otorgó +1 en Bloqueo"], ConsolaASCII, 25, 0);
                     }
                     else
                     {
-                        Animacion.Centrar(["El Bloqueo está al máximo!"], ConsolaASCII, 25, 0);
+                        Animacion.CentrarYEsquipear(["El Bloqueo está al máximo!"], ConsolaASCII, 25, 0);
                     }
                 }
             }
 
-            Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, 27, 1);
+            Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, 27, 1);
             Animacion.EvitarTeclas();
             Console.ReadKey();
             Console.Clear();

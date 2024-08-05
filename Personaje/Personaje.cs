@@ -44,14 +44,14 @@ public class FabricaDePersonajes
         // Datos para el Personaje Principal
         string NombrePP, SexoPP;
         Console.Clear();
-        Animacion.Centrar(["Antes de comenzar"], ConsolaASCII, 0, 0);
-        Animacion.Centrar(["Ingresa tu Nombre: "], ConsolaASCII, 1, 0);
+        Animacion.CentrarYEsquipear(["Antes de comenzar"], ConsolaASCII, 0, 0);
+        Animacion.CentrarYEsquipear(["Ingresa tu Nombre: "], ConsolaASCII, 1, 0);
         NombrePP = Console.ReadLine();
 
         // Puede continuar únicamente cuando ingresa el género de forma correcta
         do
         {
-            Animacion.Centrar(["Y tu Sexo (F o M): "], ConsolaASCII, 2, 0);
+            Animacion.CentrarYEsquipear(["Y tu Sexo (F o M): "], ConsolaASCII, 2, 0);
             SexoPP = Console.ReadLine();
         } while (SexoPP != "F" && SexoPP != "M" && SexoPP != "f" && SexoPP != "m");
 
@@ -153,7 +153,7 @@ public class MostrarPersonajes
     public static void Mostrar(List<Personaje> ListPersonajes, Consola ConsolaASCII)
     {
         Console.Clear();
-        Animacion.Centrar(ASCII.Participantes, ConsolaASCII, 0, 0);
+        Animacion.CentrarYEsquipear(ASCII.Participantes, ConsolaASCII, 0, 0);
 
         int Y = 16;
 
@@ -162,17 +162,17 @@ public class MostrarPersonajes
             // Dibujo ASCII por encima de los Datos del Personaje
             if (Personaje.Descripcion.Sexo == "Femenino")
             {
-                Animacion.Centrar(ASCII.PersonajeFemenino, ConsolaASCII, Y, 0);
+                Animacion.CentrarYEsquipear(ASCII.PersonajeFemenino, ConsolaASCII, Y, 0);
             }
             else
             {
-                Animacion.Centrar(ASCII.PersonajeMasculino, ConsolaASCII, Y, 0);
+                Animacion.CentrarYEsquipear(ASCII.PersonajeMasculino, ConsolaASCII, Y, 0);
             }
-            Animacion.Centrar([$"Nombre: {Personaje.Descripcion.Nombre}", $"Sexo: {Personaje.Descripcion.Sexo}", $"Ataque: {Personaje.Habilidades.Ataque}", $"Bloqueo: {Personaje.Habilidades.Bloqueo}", $"Salud: {Personaje.Habilidades.Salud}"], ConsolaASCII, Y + 21, 0);
+            Animacion.CentrarYEsquipear([$"Nombre: {Personaje.Descripcion.Nombre}", $"Sexo: {Personaje.Descripcion.Sexo}", $"Ataque: {Personaje.Habilidades.Ataque}", $"Bloqueo: {Personaje.Habilidades.Bloqueo}", $"Salud: {Personaje.Habilidades.Salud}"], ConsolaASCII, Y + 21, 0);
             Y += 25;
         }
 
-        Animacion.Centrar(["Presiona una tecla para continuar..."], ConsolaASCII, Y + 2, 1);
+        Animacion.CentrarYEsquipear(["Presiona una tecla para continuar..."], ConsolaASCII, Y + 2, 1);
         Animacion.EvitarTeclas();
         Console.ReadKey();
     }
