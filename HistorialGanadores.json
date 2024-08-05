@@ -1,1 +1,100 @@
-[{"Personaje":{"Descripcion":{"Nombre":"William2","Sexo":"Masculino"},"Habilidades":{"Ataque":100,"Bloqueo":100,"Salud":100}},"Dia":"2024-07-06T19:35:01.9262483-03:00"},{"Personaje":{"Descripcion":{"Nombre":"William3","Sexo":"Masculino"},"Habilidades":{"Ataque":100,"Bloqueo":100,"Salud":100}},"Dia":"2024-07-06T19:37:09.4095642-03:00"},{"Personaje":{"Descripcion":{"Nombre":"William4","Sexo":"Masculino"},"Habilidades":{"Ataque":100,"Bloqueo":100,"Salud":100}},"Dia":"2024-07-08T01:44:11.3715162-03:00"},{"Personaje":{"Descripcion":{"Nombre":"William4","Sexo":"Masculino"},"Habilidades":{"Ataque":100,"Bloqueo":100,"Salud":100}},"Dia":"2024-07-08T01:47:04.4763583-03:00"},{"Personaje":{"Descripcion":{"Nombre":"w","Sexo":"Femenino"},"Habilidades":{"Ataque":5,"Bloqueo":2,"Salud":100}},"Dia":"2024-07-25T11:54:59.7856099-03:00"},{"Personaje":{"Descripcion":{"Nombre":"a","Sexo":"Femenino"},"Habilidades":{"Ataque":100,"Bloqueo":100,"Salud":100}},"Dia":"2024-08-04T10:26:54.092132-03:00"}]
+[
+    {
+        "Personaje": {
+            "Descripcion": {
+                "Nombre": "William2",
+                "Sexo": "Masculino"
+            },
+            "Habilidades": {
+                "Ataque": 100,
+                "Bloqueo": 100,
+                "Salud": 100
+            }
+        },
+        "Dia": "2024-07-06T19:35:01.9262483-03:00"
+    },
+    {
+        "Personaje": {
+            "Descripcion": {
+                "Nombre": "William3",
+                "Sexo": "Masculino"
+            },
+            "Habilidades": {
+                "Ataque": 100,
+                "Bloqueo": 100,
+                "Salud": 100
+            }
+        },
+        "Dia": "2024-07-06T19:37:09.4095642-03:00"
+    },
+    {
+        "Personaje": {
+            "Descripcion": {
+                "Nombre": "William4",
+                "Sexo": "Masculino"
+            },
+            "Habilidades": {
+                "Ataque": 100,
+                "Bloqueo": 100,
+                "Salud": 100
+            }
+        },
+        "Dia": "2024-07-08T01:44:11.3715162-03:00"
+    },
+    {
+        "Personaje": {
+            "Descripcion": {
+                "Nombre": "William4",
+                "Sexo": "Masculino"
+            },
+            "Habilidades": {
+                "Ataque": 100,
+                "Bloqueo": 100,
+                "Salud": 100
+            }
+        },
+        "Dia": "2024-07-08T01:47:04.4763583-03:00"
+    },
+    {
+        "Personaje": {
+            "Descripcion": {
+                "Nombre": "w",
+                "Sexo": "Femenino"
+            },
+            "Habilidades": {
+                "Ataque": 5,
+                "Bloqueo": 2,
+                "Salud": 100
+            }
+        },
+        "Dia": "2024-07-25T11:54:59.7856099-03:00"
+    },
+    {
+        "Personaje": {
+            "Descripcion": {
+                "Nombre": "a",
+                "Sexo": "Femenino"
+            },
+            "Habilidades": {
+                "Ataque": 100,
+                "Bloqueo": 100,
+                "Salud": 100
+            }
+        },
+        "Dia": "2024-08-04T10:26:54.092132-03:00"
+    },
+    {
+        "Personaje": {
+            "Descripcion": {
+                "Nombre": "a",
+                "Sexo": "Femenino"
+            },
+            "Habilidades": {
+                "Ataque": 100,
+                "Bloqueo": 100,
+                "Salud": 100
+            }
+        },
+        "Dia": "2024-08-05T17:22:16.7475295-03:00"
+    }
+]

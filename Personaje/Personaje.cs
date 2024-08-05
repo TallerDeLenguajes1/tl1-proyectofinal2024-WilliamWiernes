@@ -84,7 +84,7 @@ public class FabricaDePersonajes
     public static Personaje PersonajeAleatorio(List<PersonajeAPI> ListPersonajesAPI)
     {
         Random Aleatorio = new Random();
-        int IndexAle = Aleatorio.Next(0, ListPersonajesAPI.Count + 1);
+        int IndexAle = Aleatorio.Next(0, ListPersonajesAPI.Count);
 
         PersonajeAPI PersonajeAleAPI = ListPersonajesAPI[IndexAle];
 

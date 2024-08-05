@@ -43,7 +43,7 @@ public class HechizoAPI
         if (ListHechizosAPI != null)
         {
             Random Aleatorio = new Random();
-            int IndexAle = Aleatorio.Next(0, ListHechizosAPI.Count + 1);
+            int IndexAle = Aleatorio.Next(0, ListHechizosAPI.Count);
             HechizoAleAPI = ListHechizosAPI[IndexAle];
         }
         else
