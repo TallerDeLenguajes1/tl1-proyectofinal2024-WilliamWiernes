@@ -65,8 +65,8 @@ public class FabricaDePersonajes
         };
 
         var Aleatorio = new Random();
-        int AtaqueAle = Aleatorio.Next(1, 5);
-        int BloqueoAle = Aleatorio.Next(1, 5);
+        int AtaqueAle = Aleatorio.Next(1, 6);
+        int BloqueoAle = Aleatorio.Next(1, 6);
 
         Caracteristicas Habilidades = new Caracteristicas
         {

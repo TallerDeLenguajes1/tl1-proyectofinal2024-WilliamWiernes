@@ -99,7 +99,7 @@ public class Animacion
                     if (Tecla.Key == ConsoleKey.Spacebar) // Tecla para esquipear la animación
                     {
                         // Mostrar el resto del texto instantáneamente
-                        Console.Write(Linea.Substring(Linea.IndexOf(Letra)));
+                        Console.Write(Linea[Linea.IndexOf(Letra)..]); // Console.Write(Linea.Substring(Linea.IndexOf(Letra)));
                         break;
                     }
                 }

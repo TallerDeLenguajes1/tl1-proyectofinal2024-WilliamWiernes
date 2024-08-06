@@ -126,7 +126,8 @@ public partial class PersonajeASCII
 
             Combate(ColisionesPersonajes(Posicion, ListPersonajesSecundariosASCII), PersonajePrincipalASCII, ConsolaASCII, ListPersonajesSecundariosASCII, ListHechizosAPI);
         }
-
+        
+        Console.CursorVisible = false;
         Dibujar();
     }
 }
