@@ -22,11 +22,16 @@
 ## :book: Uso
 ### :rocket: Guía de Inicio Rápido
 1. _Windows_ + _R_, escribir *cmd* y dar _Enter_
-2. Cambiar la *ruta* en base a dónde se descargó el archivo y pegar en el *cmd*. Por ejemplo:
+2. Aplicar el código en cosola para tener texto en UTF-8
+``` bash
+    chcp 65001
+```
+Y se debe mostrar el mensaje _Página de códigos activa: 65001_
+3. Cambiar la *ruta* en base a dónde se descargó el archivo y pegar en el *cmd*. Por ejemplo:
 ``` bash
     cd C:\Users\USUARIO\Downloads\tl1-proyectofinal2024-WilliamWiernes-main
 ```
-3. Correr el código usando el siguiente comando en el *cmd*
+4. Correr el código usando el siguiente comando en el *cmd*
 ``` bash
     dotnet run
 ```
